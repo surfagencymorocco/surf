@@ -419,10 +419,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- Email Configuration ---
 
+  var _smtpId = null;
+
   function loadEmailConfig() {
     SupabaseAPI.getEmailSettings().then(function(r) {
       if (r.error || !r.data || r.data.length === 0) return;
       var s = r.data[0];
+      _smtpId = s.id;
       if (s.smtp_host) document.getElementById('smtpHost').value = s.smtp_host;
       if (s.smtp_port) document.getElementById('smtpPort').value = s.smtp_port;
       if (s.smtp_user) document.getElementById('smtpUser').value = s.smtp_user;
@@ -444,6 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
       from_name: document.getElementById('fromName').value.trim(),
       smtp_secure: document.getElementById('smtpSecure').value === 'true'
     };
+    if (_smtpId) data.id = _smtpId;
     btn.textContent = 'Saving...';
     SupabaseAPI.saveEmailSettings(data).then(function(r) {
       btn.textContent = 'Save SMTP Settings';
@@ -452,6 +456,7 @@ document.addEventListener('DOMContentLoaded', function() {
         status.textContent = 'Error: ' + r.error.message;
         status.className = 'email-status error';
       } else {
+        if (r.data && r.data[0]) _smtpId = r.data[0].id;
         status.textContent = 'SMTP settings saved successfully!';
         status.className = 'email-status success';
         setTimeout(function() { status.textContent = ''; }, 3000);
