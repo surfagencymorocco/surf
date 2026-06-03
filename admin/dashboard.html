@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — SurfAgencyMorocco Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="dashboard">
+  <aside class="dash-sidebar">
+    <div class="dash-logo">Surf<span>Agency</span>Morocco</div>
+    <ul class="dash-nav">
+      <li><a href="#" class="active" data-section="reservations">Reservations</a></li>
+      <li><a href="#" data-section="programs">Programs</a></li>
+      <li><a href="#" data-section="email">Email</a></li>
+      <li><a href="#" class="logout-link" id="logoutBtn">Sign Out</a></li>
+    </ul>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-header">
+      <h1 id="sectionTitle">Reservations</h1>
+      <div class="user-badge" id="userEmail">admin@surfagencymorocco.com</div>
+    </div>
+
+    <!-- Reservations Section -->
+    <div class="dash-section active" id="section-reservations">
+      <div class="dash-table-wrap">
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Level</th>
+              <th>Destination</th>
+              <th>Preferred Date</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsBody">
+            <tr><td colspan="10" class="dash-loading">Loading</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Programs Section -->
+    <div class="dash-section" id="section-programs">
+      <div class="dash-section-header">
+        <span style="font-size:0.85rem;color:#8899a4" id="programsCount"></span>
+        <button id="addProgramBtn" class="login-btn dash-btn-sm">+ Add Program</button>
+      </div>
+      <div id="programsGrid" class="dash-grid">
+        <div class="dash-loading">Loading</div>
+      </div>
+    </div>
+
+    <!-- Email Configuration Section -->
+    <div class="dash-section" id="section-email">
+      <div class="email-layout">
+        <div class="email-card">
+          <h3 class="email-card-title">SMTP Configuration</h3>
+          <p class="email-card-desc">Enter your Gmail SMTP credentials using an App Password (not your personal password).</p>
+          <div class="field">
+            <label>SMTP Host</label>
+            <input id="smtpHost" class="email-input" value="smtp.gmail.com" placeholder="smtp.gmail.com">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>SMTP Port</label>
+              <input id="smtpPort" class="email-input" value="587" placeholder="587">
+            </div>
+            <div class="field">
+              <label>Encryption</label>
+              <select id="smtpSecure" class="email-input">
+                <option value="false">TLS (587)</option>
+                <option value="true">SSL (465)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Gmail Address</label>
+            <input id="smtpUser" class="email-input" placeholder="your.email@gmail.com">
+          </div>
+          <div class="field">
+            <label>App Password</label>
+            <input id="smtpPass" type="password" class="email-input" placeholder="16-char app password">
+          </div>
+          <div class="field">
+            <label>From Name</label>
+            <input id="fromName" class="email-input" value="SurfAgencyMorocco" placeholder="SurfAgencyMorocco">
+          </div>
+          <div class="field">
+            <label>From Email</label>
+            <input id="fromEmail" class="email-input" placeholder="noreply@surfagencymorocco.com">
+          </div>
+          <div class="dash-flex-row" style="margin-top:16px">
+            <button id="saveSmtpBtn" class="login-btn dash-btn-sm">Save SMTP Settings</button>
+            <button id="testEmailBtn" class="login-btn dash-btn-sm" style="background:#5b9bbf">Send Test Email</button>
+          </div>
+          <div id="smtpStatus" class="email-status"></div>
+        </div>
+
+        <div class="email-card">
+          <h3 class="email-card-title">Email Templates</h3>
+          <p class="email-card-desc">Customize the emails sent to clients when reservation status changes.</p>
+          <div id="templatesContainer">
+            <div class="dash-loading">Loading</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script defer src="../assets/js/supabase-client.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function checkAuth() {
+    if (!window._supabase) {
+      setTimeout(checkAuth, 200);
+      return;
+    }
+    SupabaseAPI.getUser().then(function(result) {
+      if (result.error || !result.data || !result.data.user) {
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('userEmail').textContent = result.data.user.email;
+        loadReservations();
+        loadPrograms();
+        loadEmailConfig();
+        loadEmailTemplates();
+      }
+    });
+  }
+
+  function renderStatusBadge(status) {
+    var s = (status || 'pending').toLowerCase();
+    var cls = 'status-pending';
+    if (s === 'confirmed') cls = 'status-confirmed';
+    if (s === 'cancelled') cls = 'status-cancelled';
+    return '<span class="status ' + cls + '">' + s + '</span>';
+  }
+
+  function formatDate(d) {
+    if (!d) return '—';
+    return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function loadReservations() {
+    var tbody = document.getElementById('reservationsBody');
+    SupabaseAPI.getReservations().then(function(result) {
+      if (result.error) {
+        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">Error loading reservations</td></tr>';
+        return;
+      }
+      var data = result.data || [];
+      if (data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">No reservations yet</td></tr>';
+        return;
+      }
+      var html = '';
+      data.forEach(function(r) {
+        html += '<tr>';
+        html += '<td>' + formatDate(r.created_at) + '</td>';
+        html += '<td><strong>' + (r.full_name || '—') + '</strong></td>';
+        html += '<td>' + (r.email || '—') + '</td>';
+        html += '<td>' + (r.phone || '—') + '</td>';
+        html += '<td>' + (r.surf_level || '—') + '</td>';
+        html += '<td>' + (r.destination || '—') + '</td>';
+        html += '<td>' + (r.preferred_date || '—') + '</td>';
+        html += '<td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (r.message || '—') + '</td>';
+        html += '<td>' + renderStatusBadge(r.status) + '</td>';
+        html += '<td class="dash-actions">';
+        html += '<select class="actions-dropdown" data-id="' + r.id + '" data-current="' + (r.status || 'pending') + '">';
+        html += '<option value="" disabled selected>Actions</option>';
+        if (r.status !== 'confirmed') {
+          html += '<option value="confirm">Confirm</option>';
+        }
+        if (r.status !== 'cancelled') {
+          html += '<option value="cancel">Cancel</option>';
+        }
+        html += '<option value="delete">Delete</option>';
+        html += '</select>';
+        html += '</td>';
+        html += '</tr>';
+      });
+      tbody.innerHTML = html;
+
+      function sendStatusEmail(reservation, newStatus) {
+        SupabaseAPI.getEmailSettings().then(function(sr) {
+          if (sr.error || !sr.data || sr.data.length === 0 || !sr.data[0].smtp_user) return;
+          var smtp = sr.data[0];
+          SupabaseAPI.getEmailTemplates().then(function(tr) {
+            if (tr.error || !tr.data) return;
+            var tmpl = null;
+            tr.data.forEach(function(t) { if (t.status === newStatus) tmpl = t; });
+            if (!tmpl || !tmpl.subject || !tmpl.body_html) return;
+            var html = tmpl.body_html
+              .replace(/\{\{name\}\}/g, reservation.full_name || 'Valued Guest')
+              .replace(/\{\{destination\}\}/g, reservation.destination || 'our surf camp')
+              .replace(/\{\{date\}\}/g, reservation.preferred_date || '')
+              .replace(/\{\{status\}\}/g, newStatus);
+            SupabaseAPI.sendEmail(reservation.email, tmpl.subject, html, smtp).then(function() {});
+          });
+        });
+      }
+
+      tbody.addEventListener('change', function(e) {
+        var sel = e.target;
+        if (!sel.classList.contains('actions-dropdown')) return;
+        var action = sel.value;
+        if (!action) return;
+        sel.value = '';
+        var id = sel.getAttribute('data-id');
+        var row = sel.closest('tr');
+        function getCell(idx) { var cells = row.querySelectorAll('td'); return cells[idx] ? cells[idx].textContent.trim() : ''; }
+        var reservation = { id: id, full_name: getCell(1), email: getCell(2), destination: getCell(5), preferred_date: getCell(6) };
+        if (action === 'confirm') {
+          SupabaseAPI.updateReservation(id, { status: 'confirmed' }).then(function() { sendStatusEmail(reservation, 'confirmed'); loadReservations(); });
+        } else if (action === 'cancel') {
+          SupabaseAPI.updateReservation(id, { status: 'cancelled' }).then(function() { sendStatusEmail(reservation, 'cancelled'); loadReservations(); });
+        } else if (action === 'delete') {
+          if (confirm('Delete this reservation?')) {
+            SupabaseAPI.deleteReservation(id).then(function() { loadReservations(); });
+          }
+        }
+      });
+    });
+  }
+
+  function programCardHTML(p) {
+    var id = p.id || '';
+    var name = p.name || '';
+    var dest = p.destination || '';
+    var level = p.level || '';
+    var price = p.price || '';
+    var dates = (p.dates && Array.isArray(p.dates)) ? p.dates.join(', ') : (p.dates || '');
+    var includes = (p.includes && Array.isArray(p.includes)) ? p.includes.join('\n') : (p.includes || '');
+    var image = p.image || '';
+    var isNew = id === '';
+    var saveLabel = isNew ? 'Create Program' : 'Save Changes';
+    var previewId = 'preview-' + (id || 'new');
+    var preview = image ? '<img id="' + previewId + '" src="' + image.replace(/"/g,'&quot;') + '" class="preview-img" onerror="this.style.display=\'none\'">' : '<div id="' + previewId + '" class="preview-img" style="display:none;background:#1e2a36"></div>';
+    return '<div class="program-card-admin" data-id="' + id + '" data-original-image="' + image.replace(/"/g,'&quot;') + '">' +
+      preview +
+      '<div class="field"><label>Program Name</label><input class="field-name" value="' + name.replace(/"/g,'&quot;') + '"></div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Destination</label><input class="field-dest" value="' + dest.replace(/"/g,'&quot;') + '"></div>' +
+        '<div class="field"><label>Level</label><select class="field-level">' +
+          '<option value="Beginner"' + (level === 'Beginner' ? ' selected' : '') + '>Beginner</option>' +
+          '<option value="Intermediate"' + (level === 'Intermediate' ? ' selected' : '') + '>Intermediate</option>' +
+          '<option value="Advanced"' + (level === 'Advanced' ? ' selected' : '') + '>Advanced</option>' +
+        '</select></div>' +
+      '</div>' +
+      '<div class="field"><label>Price (EUR)</label><input type="number" class="field-price" value="' + price + '"></div>' +
+      '<div class="field"><label>Image</label><div class="file-input-wrap"><input type="file" accept="image/*" class="field-image" id="file-' + (id || 'new') + '" data-preview="' + previewId + '"><label class="file-input-label" for="file-' + (id || 'new') + '">Choose Image</label><span class="file-input-name" id="fname-' + (id || 'new') + '">No file chosen</span></div></div>' +
+      '<div class="field"><label>Available Dates (comma-separated, e.g. May 1–8, Jun 10–17)</label><input class="field-dates" value="' + dates.replace(/"/g,'&quot;') + '"></div>' +
+      '<div class="field"><label>What\'s Included (one per line)</label><textarea class="field-includes" rows="4">' + includes.replace(/"/g,'&quot;') + '</textarea></div>' +
+      '<div class="dash-btn-group">' +
+        '<button class="save-btn" data-id="' + id + '">' + saveLabel + '</button>' +
+        (isNew ? '' : '<button class="btn-delete" data-id="' + id + '" data-action="delete-program">Delete</button>') +
+      '</div>' +
+    '</div>';
+  }
+
+  function loadPrograms() {
+    var grid = document.getElementById('programsGrid');
+    var countEl = document.getElementById('programsCount');
+    SupabaseAPI.getPrograms().then(function(result) {
+      if (result.error) {
+        grid.innerHTML = '<div class="dash-empty">Error loading programs</div>';
+        return;
+      }
+      var data = result.data || [];
+      countEl.textContent = data.length + ' program' + (data.length !== 1 ? 's' : '');
+      var html = '';
+      data.forEach(function(p) {
+        html += programCardHTML(p);
+      });
+      grid.innerHTML = html;
+      bindProgramEvents();
+    });
+  }
+
+  function bindProgramEvents() {
+    var grid = document.getElementById('programsGrid');
+
+    // File input preview
+    grid.addEventListener('change', function(e) {
+      var input = e.target;
+      if (!input.classList.contains('field-image')) return;
+      var file = input.files && input.files[0];
+      if (!file) return;
+      var fnameEl = document.getElementById('fname-' + input.id.replace('file-', ''));
+      if (fnameEl) fnameEl.textContent = file.name;
+      var previewId = input.getAttribute('data-preview');
+      var previewEl = document.getElementById(previewId);
+      if (!previewEl) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        previewEl.src = ev.target.result;
+        previewEl.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    grid.addEventListener('click', function(e) {
+      var btn = e.target.closest('button');
+      if (!btn) return;
+      var id = btn.getAttribute('data-id');
+      var action = btn.getAttribute('data-action');
+      var card = btn.closest('.program-card-admin');
+
+      // Delete
+      if (action === 'delete-program') {
+        if (confirm('Delete this program?')) {
+          SupabaseAPI.deleteProgram(id).then(function(r) {
+            if (!r.error) loadPrograms();
+          });
+        }
+        return;
+      }
+
+      // Save / Create
+      var name = card.querySelector('.field-name').value.trim();
+      var dest = card.querySelector('.field-dest').value.trim();
+      var level = card.querySelector('.field-level').value;
+      var price = card.querySelector('.field-price').value;
+      var datesRaw = card.querySelector('.field-dates').value;
+      var dates = datesRaw.split(',').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+      var includesRaw = card.querySelector('.field-includes').value;
+      var includes = includesRaw.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+
+      var fileInput = card.querySelector('.field-image');
+      var file = fileInput && fileInput.files && fileInput.files[0];
+
+      function saveProgram(imageUrl) {
+        var data = {
+          name: name,
+          destination: dest,
+          level: level,
+          price: parseInt(price) || 0,
+          image: imageUrl || '',
+          dates: dates,
+          includes: includes
+        };
+
+        if (!id) {
+          SupabaseAPI.addProgram(data).then(function(r) {
+            if (!r.error) { loadPrograms(); }
+            else { btn.textContent = 'Error!'; }
+          });
+          return;
+        }
+        SupabaseAPI.updateProgram(id, data).then(function(r) {
+          if (!r.error) {
+            btn.textContent = 'Saved!';
+            setTimeout(function() { btn.textContent = 'Save Changes'; }, 2000);
+          } else {
+            btn.textContent = 'Error!';
+          }
+        });
+      }
+
+      if (file) {
+        btn.textContent = 'Uploading...';
+        var fileName = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '');
+        SupabaseAPI.uploadImage(file, fileName).then(function(result) {
+          if (result.error) { btn.textContent = 'Upload Error'; return; }
+          var imageUrl = SupabaseAPI.getImageUrl(fileName);
+          saveProgram(imageUrl);
+        });
+      } else {
+        var imageUrl = card.getAttribute('data-original-image') || '';
+        saveProgram(imageUrl);
+      }
+    });
+  }
+
+  // Add Program button
+  document.getElementById('addProgramBtn').addEventListener('click', function() {
+    var grid = document.getElementById('programsGrid');
+    var emptyMsg = grid.querySelector('.dash-empty');
+    if (emptyMsg) emptyMsg.remove();
+    var html = programCardHTML({}) + grid.innerHTML;
+    grid.innerHTML = html;
+    bindProgramEvents();
+  });
+
+  // Navigation between sections
+  document.querySelectorAll('.dash-nav a[data-section]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var section = this.getAttribute('data-section');
+      document.querySelectorAll('.dash-nav a').forEach(function(a) { a.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('.dash-section').forEach(function(s) { s.classList.remove('active'); });
+      document.getElementById('section-' + section).classList.add('active');
+      var titles = { reservations: 'Reservations', programs: 'Programs', email: 'Email Configuration' };
+      document.getElementById('sectionTitle').textContent = titles[section] || section;
+    });
+  });
+
+  // Logout
+  document.getElementById('logoutBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    SupabaseAPI.logout().then(function() {
+      window.location.href = 'index.html';
+    });
+  });
+
+  // --- Email Configuration ---
+
+  function loadEmailConfig() {
+    SupabaseAPI.getEmailSettings().then(function(r) {
+      if (r.error || !r.data || r.data.length === 0) return;
+      var s = r.data[0];
+      if (s.smtp_host) document.getElementById('smtpHost').value = s.smtp_host;
+      if (s.smtp_port) document.getElementById('smtpPort').value = s.smtp_port;
+      if (s.smtp_user) document.getElementById('smtpUser').value = s.smtp_user;
+      if (s.smtp_pass) document.getElementById('smtpPass').value = s.smtp_pass;
+      if (s.from_email) document.getElementById('fromEmail').value = s.from_email;
+      if (s.from_name) document.getElementById('fromName').value = s.from_name;
+      if (s.smtp_secure !== undefined) document.getElementById('smtpSecure').value = s.smtp_secure ? 'true' : 'false';
+    });
+  }
+
+  document.getElementById('saveSmtpBtn').addEventListener('click', function() {
+    var btn = this;
+    var data = {
+      smtp_host: document.getElementById('smtpHost').value.trim(),
+      smtp_port: parseInt(document.getElementById('smtpPort').value) || 587,
+      smtp_user: document.getElementById('smtpUser').value.trim(),
+      smtp_pass: document.getElementById('smtpPass').value,
+      from_email: document.getElementById('fromEmail').value.trim(),
+      from_name: document.getElementById('fromName').value.trim(),
+      smtp_secure: document.getElementById('smtpSecure').value === 'true'
+    };
+    btn.textContent = 'Saving...';
+    SupabaseAPI.saveEmailSettings(data).then(function(r) {
+      btn.textContent = 'Save SMTP Settings';
+      var status = document.getElementById('smtpStatus');
+      if (r.error) {
+        status.textContent = 'Error: ' + r.error.message;
+        status.className = 'email-status error';
+      } else {
+        status.textContent = 'SMTP settings saved successfully!';
+        status.className = 'email-status success';
+        setTimeout(function() { status.textContent = ''; }, 3000);
+      }
+    });
+  });
+
+  document.getElementById('testEmailBtn').addEventListener('click', function() {
+    var btn = this;
+    var user = document.getElementById('smtpUser').value.trim();
+    if (!user) { alert('Enter your Gmail address first.'); return; }
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    var smtpData = {
+      smtp_host: document.getElementById('smtpHost').value.trim(),
+      smtp_port: parseInt(document.getElementById('smtpPort').value) || 587,
+      smtp_user: user,
+      smtp_pass: document.getElementById('smtpPass').value,
+      from_email: document.getElementById('fromEmail').value.trim() || user
+    };
+    SupabaseAPI.sendEmail(user, 'Test Email from SurfAgencyMorocco', '<div style="font-family:sans-serif;padding:40px;background:#1a2e3b;color:#fff"><h1 style="color:#e8631a">Test Successful!</h1><p>Your SMTP configuration is working correctly.</p></div>', smtpData).then(function(r) {
+      btn.textContent = 'Send Test Email';
+      btn.disabled = false;
+      var status = document.getElementById('smtpStatus');
+      if (r.error) {
+        var msg = r.error.error || r.error.message || JSON.stringify(r.error);
+        status.textContent = 'Test failed: ' + msg;
+        status.className = 'email-status error';
+      } else {
+        status.textContent = 'Test email sent to ' + user + '! Check your inbox.';
+        status.className = 'email-status success';
+        setTimeout(function() { status.textContent = ''; }, 5000);
+      }
+    });
+  });
+
+  function renderTemplateEditor(t) {
+    var id = t.id || '';
+    var status = t.status || '';
+    var subject = t.subject || '';
+    var body = t.body_html || '';
+    var label = status.charAt(0).toUpperCase() + status.slice(1);
+    var statusColors = { pending: '#e65100', confirmed: '#1b5e20', cancelled: '#c62828' };
+    var color = statusColors[status] || '#e65100';
+    return '<div class="template-card" data-status="' + status + '">' +
+      '<div class="template-header" style="border-left:4px solid ' + color + '">' +
+        '<span class="status" style="background:' + color + ';color:#fff;text-transform:uppercase">' + label + '</span>' +
+        '<span style="font-size:0.75rem;color:#8899a4">Auto-sent when reservation status changes to <strong>' + label + '</strong></span>' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Subject Line</label>' +
+        '<input class="template-subject" value="' + subject.replace(/"/g,'&quot;') + '" placeholder="e.g. Reservation Confirmed – SurfAgencyMorocco">' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Email HTML Body</label>' +
+        '<textarea class="template-body" rows="10" placeholder="<html>…</html>">' + body.replace(/"/g,'&quot;') + '</textarea>' +
+      '</div>' +
+      '<div style="display:flex;gap:8px;align-items:center">' +
+        '<button class="save-btn template-save" data-status="' + status + '">Save Template</button>' +
+        '<button class="save-btn preview-btn template-preview" data-status="' + status + '">Preview</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function loadEmailTemplates() {
+    SupabaseAPI.getEmailTemplates().then(function(r) {
+      var container = document.getElementById('templatesContainer');
+      if (r.error || !r.data || r.data.length === 0) {
+        container.innerHTML = '<div class="dash-empty">No templates found. Default templates will be created on first save.</div>';
+        return;
+      }
+      var html = '';
+      r.data.forEach(function(t) { html += renderTemplateEditor(t); });
+      container.innerHTML = html;
+
+      // Template buttons handler
+      container.addEventListener('click', function(e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        var card = btn.closest('.template-card');
+        var status = btn.getAttribute('data-status');
+
+        if (btn.classList.contains('template-preview')) {
+          var subject = card.querySelector('.template-subject').value;
+          var body = card.querySelector('.template-body').value;
+          var w = window.open('', '_blank', 'width=800,height=600');
+          w.document.write('<!DOCTYPE html><html><head><title>' + subject + '</title></head><body>' + body + '</body></html>');
+          w.document.close();
+          return;
+        }
+
+        if (btn.classList.contains('template-save')) {
+          var data = {
+            status: status,
+            subject: card.querySelector('.template-subject').value.trim(),
+            body_html: card.querySelector('.template-body').value
+          };
+          btn.textContent = 'Saving...';
+          SupabaseAPI.saveEmailTemplate(data).then(function(r) {
+            btn.textContent = 'Save Template';
+            if (!r.error) {
+              btn.textContent = 'Saved!';
+              setTimeout(function() { btn.textContent = 'Save Template'; }, 2000);
+            }
+          });
+        }
+      });
+    });
+  }
+
+  // Init
+  checkAuth();
+});
+</script>
+</body>
+</html>

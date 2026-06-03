@@ -1,0 +1,63 @@
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 5%;
+  transition: background 0.4s, box-shadow 0.4s;
+}
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+#navbar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+nav.scrolled {
+  background: var(--sand-light);
+  box-shadow: 0 2px 24px rgba(27,94,122,0.1);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem; letter-spacing: 0.05em;
+  color: var(--ocean-deep); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo svg { width: 28px; height: 28px; }
+.nav-logo span { color: var(--sunset); }
+.nav-links { display: flex; gap: 20px; list-style: none; }
+.nav-links a {
+  text-decoration: none; font-size: 0.85rem; font-weight: 500;
+  color: var(--ocean-deep); letter-spacing: 0.06em; text-transform: uppercase;
+  transition: color 0.2s; display: flex; align-items: center; gap: 6px;
+}
+.nav-links a svg { width: 14px; height: 14px; opacity: 0.6; }
+.nav-links a:hover { color: var(--sunset); }
+.nav-links a:hover svg { opacity: 1; }
+.nav-cta {
+  background: var(--sunset); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 50px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--sunset-warm) !important; transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--ocean-deep); border-radius: 2px; transition: 0.3s; display: block; }
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--sand-light); z-index: 999; flex-direction: column;
+  align-items: center; justify-content: center; gap: 36px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--ocean-deep); text-decoration: none; letter-spacing: 0.05em; }
+.mobile-menu a:hover { color: var(--sunset); }
+.close-menu { position: absolute; top: 24px; right: 5%; font-size: 2rem; cursor: pointer; color: var(--ocean-deep); background: none; border: none; }
+
+@media(max-width:680px){
+  nav { padding:14px 5%; }
+  #navbar .nav-links { display:none; }
+  .hamburger { display:flex; }
+}

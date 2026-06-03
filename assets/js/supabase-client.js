@@ -1,0 +1,118 @@
+(function() {
+  var SUPABASE_URL = 'https://njdywnbjgyovgmfxhyeu.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qZHl3bmJqZ3lvdmdtZnhoeWV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NzU3NDksImV4cCI6MjA5NjA1MTc0OX0.Uk0yepYCI-wb6LcLXyNMb2TBxc9wdLJ_RKl_hCaFTqY';
+
+  var script = document.createElement('script');
+  script.src = 'https://unpkg.com/@supabase/supabase-js@2';
+  script.onload = function() {
+    window._supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  };
+  document.head.appendChild(script);
+
+  window.SupabaseAPI = {
+    submitReservation: function(data) {
+      return window._supabase
+        ? window._supabase.from('reservations').insert([data]).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getReservations: function() {
+      return window._supabase
+        ? window._supabase.from('reservations').select('*').order('created_at', { ascending: false }).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    updateReservation: function(id, data) {
+      return window._supabase
+        ? window._supabase.from('reservations').update(data).eq('id', id).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    deleteReservation: function(id) {
+      return window._supabase
+        ? window._supabase.from('reservations').delete().eq('id', id).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getPrograms: function() {
+      return window._supabase
+        ? window._supabase.from('programs').select('*').order('created_at', { ascending: true }).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    uploadImage: function(file, fileName) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').upload(fileName, file, { upsert: true }).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getImageUrl: function(path) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').getPublicUrl(path).data.publicUrl
+        : '';
+    },
+    addProgram: function(data) {
+      return window._supabase
+        ? window._supabase.from('programs').insert([data]).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    updateProgram: function(id, data) {
+      return window._supabase
+        ? window._supabase.from('programs').update(data).eq('id', id).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    deleteProgram: function(id) {
+      return window._supabase
+        ? window._supabase.from('programs').delete().eq('id', id).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    login: function(email, password) {
+      return window._supabase
+        ? window._supabase.auth.signInWithPassword({ email: email, password: password }).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getEmailSettings: function() {
+      return window._supabase
+        ? window._supabase.from('email_settings').select('*').limit(1).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    saveEmailSettings: function(data) {
+      return window._supabase
+        ? window._supabase.from('email_settings').upsert(data, { onConflict: 'id' }).select().then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getEmailTemplates: function() {
+      return window._supabase
+        ? window._supabase.from('email_templates').select('*').order('status').then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    saveEmailTemplate: function(data) {
+      return window._supabase
+        ? window._supabase.from('email_templates').upsert(data, { onConflict: 'status' }).select().then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    sendEmail: function(to, subject, html, smtpConfig) {
+      if (!window._supabase) return Promise.reject(new Error('Supabase not loaded'));
+      var body = { to: to, subject: subject, html: html };
+      if (smtpConfig) {
+        body.host = smtpConfig.smtp_host;
+        body.port = smtpConfig.smtp_port;
+        body.user = smtpConfig.smtp_user;
+        body.pass = smtpConfig.smtp_pass;
+        body.from = smtpConfig.from_email;
+      }
+      var url = SUPABASE_URL + '/functions/v1/send-email';
+      var headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY };
+      return fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) }).then(function(res) {
+        if (!res.ok) return res.json().then(function(d) { return { error: d }; });
+        return res.json();
+      }).catch(function(err) {
+        return { error: { message: err.message } };
+      });
+    },
+    logout: function() {
+      return window._supabase
+        ? window._supabase.auth.signOut().then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    getUser: function() {
+      return window._supabase
+        ? window._supabase.auth.getUser().then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    }
+  };
+})();

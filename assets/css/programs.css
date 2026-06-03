@@ -1,0 +1,72 @@
+#programs { background: var(--sand); }
+.section-desc--narrow { max-width: 380px; font-size: 0.95rem; }
+.programs-intro { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 60px; }
+.programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.program-card {
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 4px 30px rgba(27,94,122,0.08);
+  transition: transform 0.35s, box-shadow 0.35s; display: flex; flex-direction: column;
+}
+.program-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px rgba(27,94,122,0.15); }
+.program-header {
+  padding: 0; color: var(--white); position: relative; overflow: hidden; height: 200px;
+}
+.program-header img { width: 100%; height: 100%; object-fit: cover; }
+.program-header-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 28px;
+}
+.program-header.beginner .program-header-overlay { background: linear-gradient(to top, rgba(26,122,74,0.9) 0%, transparent 60%); }
+.program-header.intermediate .program-header-overlay { background: linear-gradient(to top, rgba(27,94,122,0.9) 0%, transparent 60%); }
+.program-header.advanced .program-header-overlay { background: linear-gradient(to top, rgba(13,53,71,0.95) 0%, transparent 60%); }
+.program-level {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; opacity: 0.85; margin-bottom: 6px;
+}
+.program-level svg { width: 12px; height: 12px; }
+.program-name {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; letter-spacing: 0.04em;
+  line-height: 1; margin-bottom: 4px;
+}
+.program-location {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.8rem; opacity: 0.75;
+}
+.program-location svg { width: 12px; height: 12px; }
+.program-price-badge {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--sunset); color: var(--white);
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(232,99,26,0.4);
+}
+.program-price-badge .price { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; line-height: 1; }
+.program-price-badge .currency { font-size: 0.6rem; letter-spacing: 0.1em; opacity: 0.85; }
+.program-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+.program-section-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sunset); font-weight: 700; margin: 16px 0 10px;
+}
+.program-section-label svg { width: 12px; height: 12px; }
+.program-section-label:first-child { margin-top: 0; }
+.program-dates { display: flex; flex-wrap: wrap; gap: 8px; }
+.date-chip {
+  background: var(--sand); color: var(--ocean-deep);
+  padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+}
+.program-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.program-includes li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-mid); }
+.check { color: var(--sunset); flex-shrink: 0; margin-top: 1px; width: 16px; height: 16px; }
+.program-cta { margin-top: 24px; }
+.btn-book {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--sunset); color: var(--white);
+  padding: 13px; border-radius: var(--radius-sm); font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer; width: 100%;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-book svg { width: 16px; height: 16px; }
+.btn-book:hover { background: var(--sunset-warm); transform: translateY(-1px); }

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SurfAgencyMorocco — Ride the Atlantic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/animations.css">
+<link rel="stylesheet" href="assets/css/nav.css">
+<link rel="stylesheet" href="assets/css/hero.css">
+<link rel="stylesheet" href="assets/css/destinations.css">
+<link rel="stylesheet" href="assets/css/seasons.css">
+<link rel="stylesheet" href="assets/css/programs.css">
+<link rel="stylesheet" href="assets/css/daily.css">
+<link rel="stylesheet" href="assets/css/why.css">
+<link rel="stylesheet" href="assets/css/testimonials.css">
+<link rel="stylesheet" href="assets/css/booking.css">
+<link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="scrolled">
+  <a href="#hero" class="nav-logo">
+    <svg><use href="#icon-wave"/></svg>
+    Surf<span>Agency</span>Morocco
+  </a>
+  <ul class="nav-links">
+    <li><a href="#destinations"><svg><use href="#icon-pin"/></svg>Destinations</a></li>
+    <li><a href="#seasons"><svg><use href="#icon-calendar"/></svg>Seasons</a></li>
+    <li><a href="#programs"><svg><use href="#icon-surf"/></svg>Programs</a></li>
+    <li><a href="#daily"><svg><use href="#icon-sun"/></svg>Experience</a></li>
+    <li><a href="#why"><svg><use href="#icon-flag"/></svg>Why Us</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu">&#10005;</button>
+  <a href="#destinations" class="mob-link">Destinations</a>
+  <a href="#seasons" class="mob-link">Seasons</a>
+  <a href="#programs" class="mob-link">Programs</a>
+  <a href="#daily" class="mob-link">Experience</a>
+  <a href="#why" class="mob-link">Why Us</a>
+  <a href="#booking" class="mob-link">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-video" id="heroVideo">
+    <div id="heroPlayer"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Morocco's Premier Surf Experience</div>
+    <h1 class="hero-title">SURF AGENCY<br><span>MOROCCO</span></h1>
+    <p class="hero-subtitle">8-Day All-Inclusive Surf Camp on the Atlantic Coast</p>
+    <p class="hero-locations">Taghazout &nbsp;&bull;&nbsp; Tamraght &nbsp;&bull;&nbsp; Imsouane</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">
+        <svg><use href="#icon-surf"/></svg>
+        Book Your Surf Trip
+      </a>
+      <a href="#programs" class="btn-outline">
+        <svg><use href="#icon-arrow"/></svg>
+        View Programs
+      </a>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="#FAF5EC"/>
+  </svg>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="section-tag">
+    <svg><use href="#icon-pin"/></svg>
+    Where We Surf
+  </div>
+  <h2 class="section-title reveal">Three Legendary Spots,<br>One Unforgettable Journey</h2>
+  <div class="divider"></div>
+  <p class="section-desc reveal reveal-delay-1">Each destination offers a unique experience — from pumping Atlantic swells to the longest wave in Africa. There's a perfect spot for every surfer.</p>
+
+  <div class="dest-grid">
+    <div class="dest-card reveal reveal-delay-1">
+      <div class="dest-img">
+        <div class="dest-img-slideshow">
+          <img src="images/tagha.jpg" alt="Taghazout surf" loading="lazy">
+          <img src="images/tagha2.jpeg" alt="Taghazout surf" loading="lazy">
+          <img src="images/tagha3.jpg" alt="Taghazout surf" loading="lazy">
+        </div>
+        <div class="dest-img-overlay"></div>
+        <div class="dest-badge">Advanced</div>
+        <div class="dest-wave-rating">
+          <svg><use href="#icon-wave"/></svg>
+          <div class="wave-dots">
+            <div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot active"></div>
+          </div>
+        </div>
+      </div>
+      <div class="dest-body">
+        <h3>Taghazout</h3>
+        <p>The jewel of Moroccan surfing. World-class point breaks like Anchor Point and Hash Point attract elite surfers from around the globe. Powerful Atlantic swells meet vibrant surf culture.</p>
+        <div class="dest-tags">
+          <span class="dest-tag"><svg><use href="#icon-wave"/></svg>World-class waves</span>
+          <span class="dest-tag"><svg><use href="#icon-surf"/></svg>Anchor Point</span>
+          <span class="dest-tag">Advanced / Intermediate</span>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card reveal reveal-delay-2">
+      <div class="dest-img">
+        <img src="images/tamrgh3.jpg" alt="Tamraght beach Morocco" loading="lazy">
+        <div class="dest-img-overlay"></div>
+        <div class="dest-badge dest-badge--ocean">All Levels</div>
+        <div class="dest-wave-rating">
+          <svg><use href="#icon-wave"/></svg>
+          <div class="wave-dots">
+            <div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot"></div><div class="wave-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="dest-body">
+        <h3>Tamraght</h3>
+        <p>A calm and authentic Berber fishing village just south of Taghazout. Consistent beach breaks make Tamraght ideal for progression — with a relaxed atmosphere far from crowds.</p>
+        <div class="dest-tags">
+          <span class="dest-tag"><svg><use href="#icon-sun"/></svg>Authentic village</span>
+          <span class="dest-tag">All levels</span>
+          <span class="dest-tag">Chill vibes</span>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card reveal reveal-delay-3">
+      <div class="dest-img">
+        <div class="dest-img-slideshow">
+          <img src="images/imsouane.webp" alt="Imsouane Morocco surf" loading="lazy">
+          <img src="images/imsouane2.webp" alt="Imsouane Morocco surf" loading="lazy">
+          <img src="images/imsouane3.webp" alt="Imsouane Morocco surf" loading="lazy">
+        </div>
+        <div class="dest-img-overlay"></div>
+        <div class="dest-badge dest-badge--green">Beginner Friendly</div>
+        <div class="dest-wave-rating">
+          <svg><use href="#icon-wave"/></svg>
+          <div class="wave-dots">
+            <div class="wave-dot active"></div><div class="wave-dot active"></div><div class="wave-dot"></div><div class="wave-dot"></div><div class="wave-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="dest-body">
+        <h3>Imsouane</h3>
+        <p>Home to the longest wave in Africa — a magical 700-metre right-hander perfect for beginners. The relaxed bay and fishing village atmosphere create the most chill surf experience in Morocco.</p>
+        <div class="dest-tags">
+          <span class="dest-tag">&#127942; Longest wave in Africa</span>
+          <span class="dest-tag">Beginners</span>
+          <span class="dest-tag"><svg><use href="#icon-flag"/></svg>Fishing village</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div id="gallery">
+  <div class="gallery-strip">
+    <div class="gallery-strip-item">
+      <img src="images/galery/2024-11-05 (1).webp" alt="Surfing Morocco" loading="lazy">
+      <div class="gallery-strip-label">First Steps to the Ocean</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="images/galery/2024-11-05.webp" alt="Morocco riad" loading="lazy">
+      <div class="gallery-strip-label">From Ocean to Sahara</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="images/galery/2024-12-07.webp" alt="Atlantic sunset Morocco" loading="lazy">
+      <div class="gallery-strip-label">Energize Before the Waves</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="images/galery/2025-04-17.webp" alt="Surf coach Morocco" loading="lazy">
+      <div class="gallery-strip-label">Nights by the Fire</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="images/galery/3-cowork-view-taghazout-adventurekeys.jpg" alt="Morocco beach" loading="lazy">
+      <div class="gallery-strip-label">Balance Work & Wave</div>
+    </div>
+    <div class="gallery-strip-item">
+      <img src="images/galery/3FD8BE73-1541-46A0-B61B-298F5B3BDC8E.webp" alt="Moroccan food tagine" loading="lazy">
+      <div class="gallery-strip-label">Moroccan Cuisine</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEASONS -->
+<section id="seasons">
+  <div class="section-tag section-tag--light">
+    <svg><use href="#icon-calendar"/></svg>
+    When to Come
+  </div>
+  <h2 class="section-title section-title--light reveal">Know Your Season,<br>Catch Your Perfect Wave</h2>
+  <div class="divider"></div>
+  <div class="seasons-grid">
+    <div class="season-card reveal reveal-delay-1">
+      <div class="season-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M2 12c1.5-2 3-3 4.5-3s3 2 4.5 2 3-2 4.5-2 3 1.5 4.5 3"/><path d="M2 6c1.5-2 3-3 4.5-3s3 2 4.5 2 3-2 4.5-2 3 1.5 4.5 3"/><path d="M2 18c1.5-2 3-3 4.5-3s3 2 4.5 2 3-2 4.5-2 3 1.5 4.5 3"/></svg>
+      </div>
+      <h3>High Season</h3>
+      <div class="season-period">October — April</div>
+      <ul>
+        <li><svg><use href="#icon-check"/></svg>Powerful Atlantic swells, 1–4 metres</li>
+        <li><svg><use href="#icon-check"/></svg>Ideal for intermediate &amp; advanced surfers</li>
+        <li><svg><use href="#icon-check"/></svg>Best variety of surf spots</li>
+        <li><svg><use href="#icon-check"/></svg>Warm weather, 18–26&deg;C</li>
+        <li><svg><use href="#icon-check"/></svg>Wetsuit recommended (3/2mm)</li>
+      </ul>
+    </div>
+    <div class="season-card reveal reveal-delay-2">
+      <div class="season-icon">
+        <svg><use href="#icon-sun"/></svg>
+      </div>
+      <h3>Beginner Season</h3>
+      <div class="season-period">May — September</div>
+      <ul>
+        <li><svg><use href="#icon-check"/></svg>Smaller, gentle waves — perfect for learning</li>
+        <li><svg><use href="#icon-check"/></svg>Warm water, no wetsuit needed</li>
+        <li><svg><use href="#icon-check"/></svg>Long summer days — more surf time</li>
+        <li><svg><use href="#icon-check"/></svg>Hot sunny weather, 25–35&deg;C</li>
+        <li><svg><use href="#icon-check"/></svg>Great for families &amp; first-timers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="programs-intro">
+    <div>
+      <div class="section-tag">
+        <svg><use href="#icon-surf"/></svg>
+        Surf Packages
+      </div>
+      <h2 class="section-title reveal">Choose Your<br>8-Day Adventure</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="section-desc section-desc--narrow reveal">All-inclusive surf camps designed for every level. Small groups, expert coaches, authentic Moroccan hospitality.</p>
+  </div>
+
+  <div class="programs-grid">
+    <!-- Beginner -->
+    <div class="program-card reveal reveal-delay-1">
+      <div class="program-header beginner">
+        <img src="images/the-magic-bay.jpg" alt="Imsouane beginner surf" loading="lazy">
+        <div class="program-header-overlay">
+          <div class="program-level">
+            <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#4ade80"/></svg>
+            Beginner Camp
+          </div>
+          <div class="program-name">IMSOUANE<br>SURF CAMP</div>
+          <div class="program-location"><svg><use href="#icon-pin"/></svg>Imsouane, Morocco</div>
+        </div>
+        <div class="program-price-badge">
+          <span class="price">550</span>
+          <span class="currency">EUR / pp</span>
+        </div>
+      </div>
+      <div class="program-body">
+        <div class="program-section-label"><svg><use href="#icon-calendar"/></svg>Available Dates</div>
+        <div class="program-dates">
+          <span class="date-chip">May 1–8</span>
+          <span class="date-chip">Jun 10–17</span>
+          <span class="date-chip">Jul 5–12</span>
+          <span class="date-chip">Aug 10–17</span>
+        </div>
+        <div class="program-section-label"><svg><use href="#icon-check"/></svg>What's Included</div>
+        <ul class="program-includes">
+          <li><svg class="check"><use href="#icon-check"/></svg>7 nights accommodation</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Daily breakfast &amp; dinner</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>2 surf sessions per day</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>All equipment provided</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Certified surf instructors</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Small groups (max 8 people)</li>
+        </ul>
+        <div class="program-cta">
+          <a href="#booking" class="btn-book">Book This Camp <svg><use href="#icon-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intermediate -->
+    <div class="program-card reveal reveal-delay-2">
+      <div class="program-header intermediate">
+        <img src="images/2024-11-05.webp" alt="Tamraght surf" loading="lazy">
+        <div class="program-header-overlay">
+          <div class="program-level">
+            <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#60a5fa"/></svg>
+            Intermediate Camp
+          </div>
+          <div class="program-name">TAMRAGHT<br>SURF CAMP</div>
+          <div class="program-location"><svg><use href="#icon-pin"/></svg>Tamraght, Morocco</div>
+        </div>
+        <div class="program-price-badge">
+          <span class="price">650</span>
+          <span class="currency">EUR / pp</span>
+        </div>
+      </div>
+      <div class="program-body">
+        <div class="program-section-label"><svg><use href="#icon-calendar"/></svg>Available Dates</div>
+        <div class="program-dates">
+          <span class="date-chip">Mar 15–22</span>
+          <span class="date-chip">Apr 10–17</span>
+          <span class="date-chip">Oct 20–27</span>
+        </div>
+        <div class="program-section-label"><svg><use href="#icon-check"/></svg>What's Included</div>
+        <ul class="program-includes">
+          <li><svg class="check"><use href="#icon-check"/></svg>7 nights accommodation</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Expert coaching &amp; surf guiding</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Video analysis sessions</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Daily surf forecasting briefing</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>All meals included</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Airport transfers</li>
+        </ul>
+        <div class="program-cta">
+          <a href="#booking" class="btn-book">Book This Camp <svg><use href="#icon-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced -->
+    <div class="program-card reveal reveal-delay-3">
+      <div class="program-header advanced">
+        <img src="images/2024-12-10.webp" alt="Taghazout advanced surf" loading="lazy">
+        <div class="program-header-overlay">
+          <div class="program-level">
+            <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#f87171"/></svg>
+            Advanced Surf Trip
+          </div>
+          <div class="program-name">TAGHAZOUT<br>SURF TRIP</div>
+          <div class="program-location"><svg><use href="#icon-pin"/></svg>Taghazout, Morocco</div>
+        </div>
+        <div class="program-price-badge">
+          <span class="price">750</span>
+          <span class="currency">EUR / pp</span>
+        </div>
+      </div>
+      <div class="program-body">
+        <div class="program-section-label"><svg><use href="#icon-calendar"/></svg>Available Dates</div>
+        <div class="program-dates">
+          <span class="date-chip">Dec 5–12</span>
+          <span class="date-chip">Jan 10–17</span>
+          <span class="date-chip">Feb 5–12</span>
+        </div>
+        <div class="program-section-label"><svg><use href="#icon-check"/></svg>What's Included</div>
+        <ul class="program-includes">
+          <li><svg class="check"><use href="#icon-check"/></svg>Access to premium surf spots</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Daily transport to secret spots</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Sunrise surf sessions</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Luxury riad accommodation</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>All meals &amp; transfers</li>
+          <li><svg class="check"><use href="#icon-check"/></svg>Pro surf photography</li>
+        </ul>
+        <div class="program-cta">
+          <a href="#booking" class="btn-book">Book This Trip <svg><use href="#icon-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY EXPERIENCE -->
+<section id="daily">
+  <div class="daily-inner">
+    <div class="daily-img-wrap reveal">
+      <div class="daily-img-main" id="dailyPlayer"></div>
+      <div class="daily-video-overlay"></div>
+      <div class="daily-accent">&ldquo;Live the wave,<br>breathe Morocco&rdquo;</div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="section-tag">
+        <svg><use href="#icon-sun"/></svg>
+        A Typical Day
+      </div>
+      <h2 class="section-title">Life at Camp —<br>Sun, Surf &amp; Soul</h2>
+      <div class="divider"></div>
+      <p class="daily-desc">Every day at SurfAgencyMorocco is crafted for maximum surf time, proper rest, and unforgettable Moroccan moments.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-dot"><svg><use href="#icon-breakfast"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-time">7:00 AM</div>
+            <div class="tl-title">Sunrise Breakfast</div>
+            <div class="tl-desc">Fresh Moroccan breakfast — mint tea, msemen, honey, argan oil &amp; fresh fruit.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"><svg><use href="#icon-surf"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-time">8:00 – 11:00 AM</div>
+            <div class="tl-title">Morning Surf Session</div>
+            <div class="tl-desc">Guided surf with your coach at the best break of the day. Warm-up, drills, free surf.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"><svg><use href="#icon-home"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-time">12:30 PM</div>
+            <div class="tl-title">Lunch &amp; Rest</div>
+            <div class="tl-desc">Tagine, fresh salads, seafood — traditional Moroccan cuisine. Siesta time.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"><svg><use href="#icon-video"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-time">3:00 – 5:30 PM</div>
+            <div class="tl-title">Afternoon Session &amp; Coaching</div>
+            <div class="tl-desc">Second surf or video analysis — review your footage, improve your technique.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot"><svg><use href="#icon-moon"/></svg></div>
+          <div class="tl-content">
+            <div class="tl-time">7:30 PM</div>
+            <div class="tl-title">Dinner &amp; Chill</div>
+            <div class="tl-desc">Rooftop dinner, stories from the lineup, sunset over the Atlantic. Pure magic.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-section-intro">
+    <div class="section-tag section-tag--light">
+      <svg><use href="#icon-star"/></svg>
+      Why Choose Us
+    </div>
+    <h2 class="section-title section-title--light reveal">The SurfAgencyMorocco<br>Difference</h2>
+    <div class="divider divider--center"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon"><svg><use href="#icon-users"/></svg></div>
+      <h4>Small Groups Only</h4>
+      <p>Maximum 8 surfers per group means personalized attention, faster progression, and a tight-knit crew vibe.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon"><svg><use href="#icon-wave"/></svg></div>
+      <h4>Local Surf Instructors</h4>
+      <p>Born and raised on these breaks, our Moroccan instructors know every wave, every secret spot, every tide.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon"><svg><use href="#icon-flag"/></svg></div>
+      <h4>Authentic Morocco</h4>
+      <p>Real riads, home-cooked tagines, local markets. Not a resort — a genuine Moroccan surf life experience.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-4">
+      <div class="why-icon"><svg><use href="#icon-tag"/></svg></div>
+      <h4>Affordable Pricing</h4>
+      <p>Premium surf experience from just 550&euro; all-inclusive. World-class surfing without the world-class price tag.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag"><svg><use href="#icon-star"/></svg>Surfer Stories</div>
+  <h2 class="section-title reveal">What Our Surfers Say</h2>
+  <div class="divider"></div>
+  <div class="testimonials-track-wrap">
+    <div class="testimonials-track">
+      <!-- First set -->
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Taghazout completely blew my mind. The waves, the people, the food — I've been surfing for 10 years and this was hands-down the best surf trip I've ever taken.&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Tom R.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Paris, France</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Never surfed before in my life. In 8 days I was riding waves solo. The instructors were incredibly patient and encouraging. Imsouane is magical for beginners!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Berlin, Germany</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;The video coaching at Tamraght took my surfing to another level. Watching my sessions and getting feedback changed everything. Already booked my second trip!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">James K.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>London, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;The riad accommodation, the tagines every night, the sunsets on the Atlantic... Morocco won my heart completely. Surfing was incredible too — obviously!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Lucia V.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Barcelona, Spain</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Anchor Point at sunrise with only our group in the water. I'll remember that session for the rest of my life. The guides know exactly when and where to go.&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Erik L.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Amsterdam, NL</div></div>
+        </div>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Taghazout completely blew my mind. The waves, the people, the food — I've been surfing for 10 years and this was hands-down the best surf trip I've ever taken.&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Tom R.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Paris, France</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Never surfed before in my life. In 8 days I was riding waves solo. The instructors were incredibly patient and encouraging. Imsouane is magical for beginners!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Sarah M.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Berlin, Germany</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;The video coaching at Tamraght took my surfing to another level. Watching my sessions and getting feedback changed everything. Already booked my second trip!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">James K.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>London, UK</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;The riad accommodation, the tagines every night, the sunsets on the Atlantic... Morocco won my heart completely. Surfing was incredible too — obviously!&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Lucia V.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Barcelona, Spain</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg><svg><use href="#icon-star"/></svg></div>
+        <p class="testi-text">&ldquo;Anchor Point at sunrise with only our group in the water. I'll remember that session for the rest of my life. The guides know exactly when and where to go.&rdquo;</p>
+        <div class="testi-author">
+          <div class="testi-avatar"></div>
+          <div><div class="testi-name">Erik L.</div><div class="testi-origin"><svg><use href="#icon-pin"/></svg>Amsterdam, NL</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="reveal">
+      <div class="section-tag"><svg><use href="#icon-mail"/></svg>Get In Touch</div>
+      <h2 class="booking-info-title">Ready to Ride<br>Your First Wave?</h2>
+      <div class="divider"></div>
+      <p class="booking-desc">Fill in the form and we'll get back to you within 24 hours with your personalized surf camp quote. Spots fill fast — don't miss your wave!</p>
+
+      <div class="contact-method">
+        <div class="contact-method-icon"><svg><use href="#icon-mail"/></svg></div>
+        <div class="contact-method-text">
+          <p>Email Us</p>
+          <a href="mailto:info@surfagencymorocco.com">info@surfagencymorocco.com</a>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-icon contact-method-icon--whatsapp">
+          <svg><use href="#icon-whatsapp"/></svg>
+        </div>
+        <div class="contact-method-text">
+          <p>WhatsApp Us</p>
+          <a href="https://wa.me/48662763381" target="_blank">+48 662 763 381</a>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-icon contact-method-icon--map">
+          <svg><use href="#icon-pin"/></svg>
+        </div>
+        <div class="contact-method-text">
+          <p>Find Us</p>
+          <a href="#">ul. Wrocławska 5A, 30-006 Kraków, Poland</a>
+        </div>
+      </div>
+      <div class="booking-map-wrap">
+        <h4 class="booking-map-title">Poland (Kraków) Office</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.459104289656!2d19.9624717!3d50.0402304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471645e3f5d61a37%3A0xb1f5561ef8a5ddaf!2sSurf%20Agency%20Morocco%20%E2%80%93%20Agencja%20Surfingowa!5e0!3m2!1sen!2spl!4v1780482423045!5m2!1sen!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <div class="booking-form reveal reveal-delay-2">
+      <h3 class="booking-form-title">Reserve Your Spot</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label><svg><use href="#icon-person"/></svg>Full Name</label>
+          <input type="text" id="formName" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label><svg><use href="#icon-mail"/></svg>Email Address</label>
+          <input type="email" id="formEmail" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label><svg><use href="#icon-phone"/></svg>Phone (with code)</label>
+          <input type="tel" id="formPhone" placeholder="+33 6 00 00 00 00">
+        </div>
+        <div class="form-group">
+          <label><svg><use href="#icon-surf"/></svg>Surf Level</label>
+          <select id="formLevel">
+            <option value="" disabled selected>Select level</option>
+            <option>Beginner (never surfed)</option>
+            <option>Intermediate (1–3 years)</option>
+            <option>Advanced (3+ years)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label><svg><use href="#icon-pin"/></svg>Destination</label>
+          <select id="formDestination">
+            <option value="" disabled selected>Choose destination</option>
+            <option>Imsouane (Beginner)</option>
+            <option>Tamraght (Intermediate)</option>
+            <option>Taghazout (Advanced)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><svg><use href="#icon-calendar"/></svg>Preferred Date</label>
+          <input type="text" id="formDate" placeholder="Preferred Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+          <textarea id="formMessage" placeholder="Tell us about your surf experience, any questions, or special requests&hellip;"></textarea>
+      </div>
+      <button class="form-submit" id="submitBtn">
+        <svg><use href="#icon-surf"/></svg>
+        Reserve Now — Spots Are Limited
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <svg><use href="#icon-wave"/></svg>
+        Surf<span>Agency</span>Morocco
+      </span>
+      <p>Morocco's most authentic surf travel experience. Since 2018, we've been guiding surfers from all over the world to the best waves of the Atlantic coast.</p>
+      <p class="footer-company-info">
+        SURF AGENCY MOROCCO SP Z O O<br>
+        ul. Wrocławska 5A, 30-006 Kraków, Poland<br>
+        KRS: 0001175869 | NIP: 6793332584 | REGON: 541850550
+      </p>
+      <div class="social-row">
+        <a href="#" class="social-btn" title="Instagram"><svg><use href="#icon-instagram"/></svg></a>
+        <a href="#" class="social-btn" title="Facebook"><svg><use href="#icon-facebook"/></svg></a>
+        <a href="https://wa.me/48662763381" class="social-btn" title="WhatsApp"><svg><use href="#icon-whatsapp"/></svg></a>
+        <a href="#" class="social-btn" title="YouTube"><svg><use href="#icon-youtube"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#destinations"><svg><use href="#icon-pin"/></svg>Destinations</a></li>
+        <li><a href="#seasons"><svg><use href="#icon-calendar"/></svg>Surf Seasons</a></li>
+        <li><a href="#programs"><svg><use href="#icon-surf"/></svg>Packages &amp; Prices</a></li>
+        <li><a href="#daily"><svg><use href="#icon-sun"/></svg>Daily Experience</a></li>
+        <li><a href="#booking"><svg><use href="#icon-arrow"/></svg>Book Now</a></li>
+        <li><a href="admin/index.html"><svg><use href="#icon-person"/></svg>Connexion</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:info@surfagencymorocco.com"><svg><use href="#icon-mail"/></svg>info@surfagencymorocco.com</a></li>
+        <li><a href="https://wa.me/48662763381"><svg><use href="#icon-whatsapp"/></svg>WhatsApp: +48 662 763 381</a></li>
+        <li><a href="#"><svg><use href="#icon-pin"/></svg>Kraków, Poland</a></li>
+      </ul>
+      <div class="footer-col-cta">
+        <a href="https://wa.me/48662763381" target="_blank" class="btn-primary btn-primary--sm">
+          <svg><use href="#icon-whatsapp"/></svg> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><svg><use href="#icon-wave"/></svg>&copy; 2025 SurfAgencyMorocco. All rights reserved. Crafted with love in Morocco.</p>
+    <p>Privacy Policy &middot; Terms of Service</p>
+  </div>
+</footer>
+
+<script defer src="assets/js/supabase-client.js"></script>
+<script defer src="assets/js/svg-loader.js"></script>
+<script defer src="assets/js/hero.js"></script>
+<script defer src="assets/js/nav.js"></script>
+<script defer src="assets/js/reveal.js"></script>
+<script defer src="assets/js/testimonials.js"></script>
+<script defer src="assets/js/programs.js"></script>
+<script defer src="assets/js/form.js"></script>
+</body>
+</html>

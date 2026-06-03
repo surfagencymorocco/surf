@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — SurfAgencyMorocco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-logo">Surf<span>Agency</span>Morocco</div>
+    <p class="login-subtitle">Admin Panel</p>
+    <form id="loginForm">
+      <div class="login-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="admin@surfagencymorocco.com" required>
+      </div>
+      <div class="login-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button type="submit" id="loginBtn" class="login-btn">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<script defer src="../assets/js/supabase-client.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.getElementById('loginForm');
+  var email = document.getElementById('email');
+  var password = document.getElementById('password');
+  var error = document.getElementById('loginError');
+  var btn = document.getElementById('loginBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    error.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Signing in...';
+
+    function doLogin() {
+      if (!window._supabase) {
+        setTimeout(doLogin, 200);
+        return;
+      }
+      SupabaseAPI.login(email.value, password.value).then(function(result) {
+        if (result.error) {
+          error.textContent = result.error.message;
+          btn.disabled = false;
+          btn.textContent = 'Sign In';
+        } else {
+          window.location.href = 'dashboard.html';
+        }
+      });
+    }
+    doLogin();
+  });
+});
+</script>
+</body>
+</html>
