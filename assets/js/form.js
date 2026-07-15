@@ -15,7 +15,7 @@
       return;
     }
 
-    this.innerHTML = 'Sending...';
+    this.innerHTML = window.i18n ? window.i18n.t('booking.form.sending') : 'Sending...';
     this.disabled = true;
 
     var data = {
@@ -32,13 +32,14 @@
     if (window.SupabaseAPI) {
       SupabaseAPI.submitReservation(data).then(function(result) {
         if (result.error) {
-          submitBtn.innerHTML = 'Error — try again';
+          submitBtn.innerHTML = window.i18n ? window.i18n.t('booking.form.error') : 'Error — try again';
           submitBtn.disabled = false;
           setTimeout(function() {
             submitBtn.innerHTML = originalHtml;
           }, 3000);
         } else {
-          submitBtn.innerHTML = '<svg><use href="#icon-check"/></svg> Request Sent! We\'ll reply in 24h';
+          var successMsg = window.i18n ? window.i18n.t('booking.form.success') : "Request Sent! We'll reply in 24h";
+          submitBtn.innerHTML = '<svg><use href="#icon-check"/></svg> ' + successMsg;
           submitBtn.style.background = '#1a7a4a';
           document.getElementById('formName').value = '';
           document.getElementById('formEmail').value = '';
@@ -61,19 +62,22 @@
               var tmpl = null;
               tr.data.forEach(function(t) { if (t.status === 'pending') tmpl = t; });
               if (!tmpl || !tmpl.subject || !tmpl.body_html) return;
-              var html = tmpl.body_html
+              var subject = SupabaseAPI.localized ? SupabaseAPI.localized(tmpl.subject) : tmpl.subject;
+              var bodyHtml = SupabaseAPI.localized ? SupabaseAPI.localized(tmpl.body_html) : tmpl.body_html;
+              var html = bodyHtml
                 .replace(/\{\{name\}\}/g, data.full_name)
                 .replace(/\{\{destination\}\}/g, data.destination)
                 .replace(/\{\{date\}\}/g, data.preferred_date)
                 .replace(/\{\{status\}\}/g, 'pending');
-              SupabaseAPI.sendEmail(data.email, tmpl.subject, html, smtp).then(function() {});
+              SupabaseAPI.sendEmail(data.email, subject, html, smtp).then(function() {});
             });
           });
         }
       });
     } else {
       // Fallback mock
-      this.innerHTML = '<svg><use href="#icon-check"/></svg> Request Sent! We\'ll reply in 24h';
+      var fallbackMsg = window.i18n ? window.i18n.t('booking.form.success') : "Request Sent! We'll reply in 24h";
+      this.innerHTML = '<svg><use href="#icon-check"/></svg> ' + fallbackMsg;
       this.style.background = '#1a7a4a';
       setTimeout(function() {
         submitBtn.innerHTML = originalHtml;

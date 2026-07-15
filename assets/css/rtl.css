@@ -1,0 +1,26 @@
+/* ==========================================================================
+   RTL (Right-to-Left) Language Support — Placeholder
+   ==========================================================================
+   Aucune langue RTL n'est actuellement utilisée.
+   Ce fichier est prêt à être complété lors de l'ajout d'une langue
+   comme l'arabe (ar), l'hébreu (he) ou le persan (fa).
+
+   Pour activer le support RTL :
+   1. Ajouter la langue dans locales/config.js
+   2. Créer le fichier de traduction (ex: locales/ar.js)
+   3. Décommenter et adapter les règles ci-dessous
+   ========================================================================== */
+
+/*
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+[dir="rtl"] .hero-content { text-align: right; }
+[dir="rtl"] .footer-grid { direction: rtl; }
+
+[dir="rtl"] .section-title br { display: none; }
+*/

@@ -1,6 +1,6 @@
 (function() {
-  var SUPABASE_URL = 'https://njdywnbjgyovgmfxhyeu.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qZHl3bmJqZ3lvdmdtZnhoeWV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0NzU3NDksImV4cCI6MjA5NjA1MTc0OX0.Uk0yepYCI-wb6LcLXyNMb2TBxc9wdLJ_RKl_hCaFTqY';
+  var SUPABASE_URL = 'https://gfcpxdxfshopclfmnfnk.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmY3B4ZHhmc2hvcGNsZm1uZm5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MjIyOTcsImV4cCI6MjA5ODI5ODI5N30.nchqNdd9MItMGsW-85SjFXaRE5z0425yYOukCTjzljo';
 
   var script = document.createElement('script');
   script.src = 'https://unpkg.com/@supabase/supabase-js@2';
@@ -113,6 +113,16 @@
       return window._supabase
         ? window._supabase.auth.getUser().then(function(r) { return r; })
         : Promise.reject(new Error('Supabase not loaded'));
+    },
+    localized: function(value, lang) {
+      if (!value) return '';
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        return value[lang || 'en'] || value.en || value.fr || Object.values(value).find(function(v) { return v; }) || '';
+      }
+      if (Array.isArray(value)) {
+        return value.map(function(item) { return window.SupabaseAPI.localized(item, lang); });
+      }
+      return String(value);
     }
   };
 })();

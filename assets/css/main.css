@@ -82,3 +82,22 @@ section { padding: 59px 5%; }
 .section-title--light { color: var(--white); }
 
 .divider--center { margin: 20px auto; }
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher {
+  display: flex; gap: 4px; margin-left: 20px; align-items: center;
+}
+.lang-btn {
+  background: transparent; color: var(--text-light);
+  border: 1px solid transparent; padding: 4px 8px;
+  border-radius: var(--radius-sm); font-size: 0.7rem;
+  font-weight: 600; letter-spacing: 0.05em; cursor: pointer;
+  transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+}
+.lang-btn:hover { color: var(--sunset); border-color: var(--sand-dark); }
+.lang-btn.active { color: var(--sunset); background: rgba(232,99,26,0.1); border-color: var(--sunset); }
+
+.mob-lang-switcher {
+  display: flex; gap: 8px; justify-content: center; padding: 16px 0; border-top: 1px solid var(--sand-dark); margin-top: 12px;
+}
+.mob-lang-btn { font-size: 0.8rem; padding: 8px 16px; }

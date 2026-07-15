@@ -11,23 +11,24 @@
 <body>
 <div class="login-page">
   <div class="login-card">
-    <div class="login-logo">Surf<span>Agency</span>Morocco</div>
-    <p class="login-subtitle">Admin Panel</p>
+    <div class="login-logo"><span data-i18n="nav.surf">Surf</span><span data-i18n="nav.agency">Agency</span><span data-i18n="nav.morocco">Morocco</span></div>
+    <p class="login-subtitle" data-i18n="login.adminSubtitle">Admin Panel</p>
     <form id="loginForm">
       <div class="login-field">
-        <label for="email">Email</label>
+        <label for="email" data-i18n="login.email">Email</label>
         <input type="email" id="email" placeholder="admin@surfagencymorocco.com" required>
       </div>
       <div class="login-field">
-        <label for="password">Password</label>
+        <label for="password" data-i18n="login.password">Password</label>
         <input type="password" id="password" placeholder="Enter your password" required>
       </div>
       <div class="login-error" id="loginError"></div>
-      <button type="submit" id="loginBtn" class="login-btn">Sign In</button>
+      <button type="submit" id="loginBtn" class="login-btn" data-i18n="login.signIn">Sign In</button>
     </form>
   </div>
 </div>
 
+<script defer src="../assets/js/i18n.js"></script>
 <script defer src="../assets/js/supabase-client.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     error.textContent = '';
     btn.disabled = true;
-    btn.textContent = 'Signing in...';
+    btn.textContent = (window.i18n && window.i18n.t('login.signingIn')) || 'Signing in...';
 
     function doLogin() {
       if (!window._supabase) {
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (result.error) {
           error.textContent = result.error.message;
           btn.disabled = false;
-          btn.textContent = 'Sign In';
+          btn.textContent = (window.i18n && window.i18n.t('login.signIn')) || 'Sign In';
         } else {
           window.location.href = 'dashboard.html';
         }

@@ -13,16 +13,16 @@
   <aside class="dash-sidebar">
     <div class="dash-logo">Surf<span>Agency</span>Morocco</div>
     <ul class="dash-nav">
-      <li><a href="#" class="active" data-section="reservations">Reservations</a></li>
-      <li><a href="#" data-section="programs">Programs</a></li>
-      <li><a href="#" data-section="email">Email</a></li>
-      <li><a href="#" class="logout-link" id="logoutBtn">Sign Out</a></li>
+      <li><a href="#" class="active" data-section="reservations" data-i18n="dashboard.reservations">Reservations</a></li>
+      <li><a href="#" data-section="programs" data-i18n="dashboard.programs">Programs</a></li>
+      <li><a href="#" data-section="email" data-i18n="dashboard.email">Email</a></li>
+      <li><a href="#" class="logout-link" id="logoutBtn" data-i18n="dashboard.signOut">Sign Out</a></li>
     </ul>
   </aside>
 
   <main class="dash-main">
     <div class="dash-header">
-      <h1 id="sectionTitle">Reservations</h1>
+      <h1 id="sectionTitle" data-i18n="dashboard.reservations">Reservations</h1>
       <div class="user-badge" id="userEmail">admin@surfagencymorocco.com</div>
     </div>
 
@@ -32,20 +32,20 @@
         <table class="dash-table">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Level</th>
-              <th>Destination</th>
-              <th>Preferred Date</th>
-              <th>Message</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th data-i18n="dashboard.date">Date</th>
+              <th data-i18n="dashboard.name">Name</th>
+              <th data-i18n="dashboard.emailCol">Email</th>
+              <th data-i18n="dashboard.phone">Phone</th>
+              <th data-i18n="dashboard.level">Level</th>
+              <th data-i18n="dashboard.destination">Destination</th>
+              <th data-i18n="dashboard.preferredDate">Preferred Date</th>
+              <th data-i18n="dashboard.message">Message</th>
+              <th data-i18n="dashboard.status">Status</th>
+              <th data-i18n="dashboard.actions">Actions</th>
             </tr>
           </thead>
           <tbody id="reservationsBody">
-            <tr><td colspan="10" class="dash-loading">Loading</td></tr>
+            <tr><td colspan="10" class="dash-loading" data-i18n="dashboard.loading">Loading</td></tr>
           </tbody>
         </table>
       </div>
@@ -55,10 +55,10 @@
     <div class="dash-section" id="section-programs">
       <div class="dash-section-header">
         <span style="font-size:0.85rem;color:#8899a4" id="programsCount"></span>
-        <button id="addProgramBtn" class="login-btn dash-btn-sm">+ Add Program</button>
+        <button id="addProgramBtn" class="login-btn dash-btn-sm" data-i18n="dashboard.addProgram">+ Add Program</button>
       </div>
       <div id="programsGrid" class="dash-grid">
-        <div class="dash-loading">Loading</div>
+        <div class="dash-loading" data-i18n="dashboard.loading">Loading</div>
       </div>
     </div>
 
@@ -66,53 +66,53 @@
     <div class="dash-section" id="section-email">
       <div class="email-layout">
         <div class="email-card">
-          <h3 class="email-card-title">SMTP Configuration</h3>
-          <p class="email-card-desc">Enter your Gmail SMTP credentials using an App Password (not your personal password).</p>
+          <h3 class="email-card-title" data-i18n="dashboard.smtpTitle">SMTP Configuration</h3>
+          <p class="email-card-desc" data-i18n="dashboard.smtpDesc">Enter your Gmail SMTP credentials using an App Password (not your personal password).</p>
           <div class="field">
-            <label>SMTP Host</label>
+            <label data-i18n="dashboard.smtpHost">SMTP Host</label>
             <input id="smtpHost" class="email-input" value="smtp.gmail.com" placeholder="smtp.gmail.com">
           </div>
           <div class="field-row">
             <div class="field">
-              <label>SMTP Port</label>
+              <label data-i18n="dashboard.smtpPort">SMTP Port</label>
               <input id="smtpPort" class="email-input" value="587" placeholder="587">
             </div>
             <div class="field">
-              <label>Encryption</label>
+              <label data-i18n="dashboard.encryption">Encryption</label>
               <select id="smtpSecure" class="email-input">
-                <option value="false">TLS (587)</option>
-                <option value="true">SSL (465)</option>
+                <option value="false" data-i18n="dashboard.tls">TLS (587)</option>
+                <option value="true" data-i18n="dashboard.ssl">SSL (465)</option>
               </select>
             </div>
           </div>
           <div class="field">
-            <label>Gmail Address</label>
+            <label data-i18n="dashboard.gmailAddress">Gmail Address</label>
             <input id="smtpUser" class="email-input" placeholder="your.email@gmail.com">
           </div>
           <div class="field">
-            <label>App Password</label>
+            <label data-i18n="dashboard.appPassword">App Password</label>
             <input id="smtpPass" type="password" class="email-input" placeholder="16-char app password">
           </div>
           <div class="field">
-            <label>From Name</label>
+            <label data-i18n="dashboard.fromName">From Name</label>
             <input id="fromName" class="email-input" value="SurfAgencyMorocco" placeholder="SurfAgencyMorocco">
           </div>
           <div class="field">
-            <label>From Email</label>
+            <label data-i18n="dashboard.fromEmail">From Email</label>
             <input id="fromEmail" class="email-input" placeholder="noreply@surfagencymorocco.com">
           </div>
           <div class="dash-flex-row" style="margin-top:16px">
-            <button id="saveSmtpBtn" class="login-btn dash-btn-sm">Save SMTP Settings</button>
-            <button id="testEmailBtn" class="login-btn dash-btn-sm" style="background:#5b9bbf">Send Test Email</button>
+            <button id="saveSmtpBtn" class="login-btn dash-btn-sm" data-i18n="dashboard.saveSmtp">Save SMTP Settings</button>
+            <button id="testEmailBtn" class="login-btn dash-btn-sm" style="background:#5b9bbf" data-i18n="dashboard.testEmail">Send Test Email</button>
           </div>
           <div id="smtpStatus" class="email-status"></div>
         </div>
 
         <div class="email-card">
-          <h3 class="email-card-title">Email Templates</h3>
-          <p class="email-card-desc">Customize the emails sent to clients when reservation status changes.</p>
+          <h3 class="email-card-title" data-i18n="dashboard.templatesTitle">Email Templates</h3>
+          <p class="email-card-desc" data-i18n="dashboard.templatesDesc">Customize the emails sent to clients when reservation status changes.</p>
           <div id="templatesContainer">
-            <div class="dash-loading">Loading</div>
+            <div class="dash-loading" data-i18n="dashboard.loading">Loading</div>
           </div>
         </div>
       </div>
@@ -120,6 +120,7 @@
   </main>
 </div>
 
+<script defer src="../assets/js/i18n.js"></script>
 <script defer src="../assets/js/supabase-client.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -141,6 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  function t(key, fallback) {
+    return (window.i18n && window.i18n.t(key)) || fallback || key;
+  }
+
   function renderStatusBadge(status) {
     var s = (status || 'pending').toLowerCase();
     var cls = 'status-pending';
@@ -158,12 +163,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var tbody = document.getElementById('reservationsBody');
     SupabaseAPI.getReservations().then(function(result) {
       if (result.error) {
-        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">Error loading reservations</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">' + t('dashboard.errorLoading') + '</td></tr>';
         return;
       }
       var data = result.data || [];
       if (data.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">No reservations yet</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="10" class="dash-empty">' + t('dashboard.noReservations') + '</td></tr>';
         return;
       }
       var html = '';
@@ -180,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         html += '<td>' + renderStatusBadge(r.status) + '</td>';
         html += '<td class="dash-actions">';
         html += '<select class="actions-dropdown" data-id="' + r.id + '" data-current="' + (r.status || 'pending') + '">';
-        html += '<option value="" disabled selected>Actions</option>';
+        html += '<option value="" disabled selected>' + t('dashboard.actions') + '</option>';
         if (r.status !== 'confirmed') {
           html += '<option value="confirm">Confirm</option>';
         }
@@ -203,12 +208,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var tmpl = null;
             tr.data.forEach(function(t) { if (t.status === newStatus) tmpl = t; });
             if (!tmpl || !tmpl.subject || !tmpl.body_html) return;
-            var html = tmpl.body_html
+            var subject = SupabaseAPI.localized(tmpl.subject) || '';
+            var bodyHtml = SupabaseAPI.localized(tmpl.body_html) || '';
+            var html = bodyHtml
               .replace(/\{\{name\}\}/g, reservation.full_name || 'Valued Guest')
               .replace(/\{\{destination\}\}/g, reservation.destination || 'our surf camp')
               .replace(/\{\{date\}\}/g, reservation.preferred_date || '')
               .replace(/\{\{status\}\}/g, newStatus);
-            SupabaseAPI.sendEmail(reservation.email, tmpl.subject, html, smtp).then(function() {});
+            SupabaseAPI.sendEmail(reservation.email, subject, html, smtp).then(function() {});
           });
         });
       }
@@ -228,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (action === 'cancel') {
           SupabaseAPI.updateReservation(id, { status: 'cancelled' }).then(function() { sendStatusEmail(reservation, 'cancelled'); loadReservations(); });
         } else if (action === 'delete') {
-          if (confirm('Delete this reservation?')) {
+          if (confirm(t('dashboard.deleteConfirm'))) {
             SupabaseAPI.deleteReservation(id).then(function() { loadReservations(); });
           }
         }
@@ -236,34 +243,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  function readJsonbValue(val, lang) {
+    if (!val) return '';
+    if (typeof val === 'object' && !Array.isArray(val)) {
+      return val[lang] || val.en || val.fr || '';
+    }
+    return String(val);
+  }
+
+  function i18nInputsHTML(label, className, value, isTextarea) {
+    var langs = ['fr', 'en', 'pl'];
+    var html = '<div class="field field-i18n"><label>' + label + '</label><div class="i18n-inputs">';
+    langs.forEach(function(lang) {
+      var val = readJsonbValue(value, lang);
+      var badge = lang.toUpperCase();
+      if (isTextarea) {
+        html += '<div class="i18n-row"><span class="i18n-lang-badge">' + badge + '</span><textarea class="' + className + '" data-lang="' + lang + '" rows="2">' + val.replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</textarea></div>';
+      } else {
+        html += '<div class="i18n-row"><span class="i18n-lang-badge">' + badge + '</span><input class="' + className + '" data-lang="' + lang + '" value="' + val.replace(/"/g,'&quot;') + '"></div>';
+      }
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function readI18nField(card, className) {
+    var inputs = card.querySelectorAll('.' + className + '[data-lang]');
+    var result = {};
+    inputs.forEach(function(inp) {
+      result[inp.getAttribute('data-lang')] = inp.value.trim();
+    });
+    return result;
+  }
+
   function programCardHTML(p) {
     var id = p.id || '';
-    var name = p.name || '';
-    var dest = p.destination || '';
-    var level = p.level || '';
     var price = p.price || '';
     var dates = (p.dates && Array.isArray(p.dates)) ? p.dates.join(', ') : (p.dates || '');
-    var includes = (p.includes && Array.isArray(p.includes)) ? p.includes.join('\n') : (p.includes || '');
+    var includesVal = p.includes;
     var image = p.image || '';
     var isNew = id === '';
     var saveLabel = isNew ? 'Create Program' : 'Save Changes';
     var previewId = 'preview-' + (id || 'new');
     var preview = image ? '<img id="' + previewId + '" src="' + image.replace(/"/g,'&quot;') + '" class="preview-img" onerror="this.style.display=\'none\'">' : '<div id="' + previewId + '" class="preview-img" style="display:none;background:#1e2a36"></div>';
+
+    var enLevel = readJsonbValue(p.level, 'en').toLowerCase();
+    var isNew = id === '';
+    var saveLabel = isNew ? t('dashboard.createProgram') : t('dashboard.saveChanges');
+
     return '<div class="program-card-admin" data-id="' + id + '" data-original-image="' + image.replace(/"/g,'&quot;') + '">' +
       preview +
-      '<div class="field"><label>Program Name</label><input class="field-name" value="' + name.replace(/"/g,'&quot;') + '"></div>' +
-      '<div class="field-row">' +
-        '<div class="field"><label>Destination</label><input class="field-dest" value="' + dest.replace(/"/g,'&quot;') + '"></div>' +
-        '<div class="field"><label>Level</label><select class="field-level">' +
-          '<option value="Beginner"' + (level === 'Beginner' ? ' selected' : '') + '>Beginner</option>' +
-          '<option value="Intermediate"' + (level === 'Intermediate' ? ' selected' : '') + '>Intermediate</option>' +
-          '<option value="Advanced"' + (level === 'Advanced' ? ' selected' : '') + '>Advanced</option>' +
-        '</select></div>' +
-      '</div>' +
-      '<div class="field"><label>Price (EUR)</label><input type="number" class="field-price" value="' + price + '"></div>' +
-      '<div class="field"><label>Image</label><div class="file-input-wrap"><input type="file" accept="image/*" class="field-image" id="file-' + (id || 'new') + '" data-preview="' + previewId + '"><label class="file-input-label" for="file-' + (id || 'new') + '">Choose Image</label><span class="file-input-name" id="fname-' + (id || 'new') + '">No file chosen</span></div></div>' +
-      '<div class="field"><label>Available Dates (comma-separated, e.g. May 1–8, Jun 10–17)</label><input class="field-dates" value="' + dates.replace(/"/g,'&quot;') + '"></div>' +
-      '<div class="field"><label>What\'s Included (one per line)</label><textarea class="field-includes" rows="4">' + includes.replace(/"/g,'&quot;') + '</textarea></div>' +
+      i18nInputsHTML(t('dashboard.programName'), 'field-name', p.name, false) +
+      i18nInputsHTML(t('dashboard.programDest'), 'field-dest', p.destination, false) +
+      '<div class="field"><label>' + t('dashboard.programLevel') + '</label><select class="field-level">' +
+        '<option value="fr:Débutant,en:Beginner,pl:Początkujący"' + (enLevel === 'beginner' ? ' selected' : '') + '>Beginner</option>' +
+        '<option value="fr:Intermédiaire,en:Intermediate,pl:Średniozaawansowany"' + (enLevel === 'intermediate' ? ' selected' : '') + '>Intermediate</option>' +
+        '<option value="fr:Avancé,en:Advanced,pl:Zaawansowany"' + (enLevel === 'advanced' ? ' selected' : '') + '>Advanced</option>' +
+      '</select></div>' +
+      '<div class="field"><label>' + t('dashboard.programPrice') + '</label><input type="number" class="field-price" value="' + price + '"></div>' +
+      '<div class="field"><label>' + t('dashboard.programImage') + '</label><div class="file-input-wrap"><input type="file" accept="image/*" class="field-image" id="file-' + (id || 'new') + '" data-preview="' + previewId + '"><label class="file-input-label" for="file-' + (id || 'new') + '">' + t('dashboard.chooseImage') + '</label><span class="file-input-name" id="fname-' + (id || 'new') + '">' + t('dashboard.noFile') + '</span></div></div>' +
+      '<div class="field"><label>' + t('dashboard.programDates') + '</label><input class="field-dates" value="' + dates.replace(/"/g,'&quot;') + '"></div>' +
+      i18nInputsHTML(t('dashboard.programIncludes'), 'field-includes', includesVal, true) +
       '<div class="dash-btn-group">' +
         '<button class="save-btn" data-id="' + id + '">' + saveLabel + '</button>' +
         (isNew ? '' : '<button class="btn-delete" data-id="' + id + '" data-action="delete-program">Delete</button>') +
@@ -276,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var countEl = document.getElementById('programsCount');
     SupabaseAPI.getPrograms().then(function(result) {
       if (result.error) {
-        grid.innerHTML = '<div class="dash-empty">Error loading programs</div>';
+        grid.innerHTML = '<div class="dash-empty">' + t('dashboard.errorLoading') + '</div>';
         return;
       }
       var data = result.data || [];
@@ -321,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Delete
       if (action === 'delete-program') {
-        if (confirm('Delete this program?')) {
+        if (confirm(t('dashboard.deleteProgramConfirm'))) {
           SupabaseAPI.deleteProgram(id).then(function(r) {
             if (!r.error) loadPrograms();
           });
@@ -330,14 +370,36 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Save / Create
-      var name = card.querySelector('.field-name').value.trim();
-      var dest = card.querySelector('.field-dest').value.trim();
-      var level = card.querySelector('.field-level').value;
+      var name = readI18nField(card, 'field-name');
+      var dest = readI18nField(card, 'field-dest');
+      var levelRaw = card.querySelector('.field-level').value;
+      var levelParts = levelRaw.split(',');
+      var level = {};
+      levelParts.forEach(function(part) {
+        var kv = part.split(':');
+        level[kv[0]] = kv[1];
+      });
       var price = card.querySelector('.field-price').value;
       var datesRaw = card.querySelector('.field-dates').value;
       var dates = datesRaw.split(',').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
-      var includesRaw = card.querySelector('.field-includes').value;
-      var includes = includesRaw.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+      var includesInputs = card.querySelectorAll('.field-includes[data-lang]');
+      var includesByLang = {};
+      includesInputs.forEach(function(inp) {
+        var lang = inp.getAttribute('data-lang');
+        var lines = inp.value.split('\n').map(function(s) { return s.trim(); }).filter(function(s) { return s; });
+        includesByLang[lang] = lines;
+      });
+      var langs = Object.keys(includesByLang);
+      var maxLen = 0;
+      langs.forEach(function(l) { if (includesByLang[l].length > maxLen) maxLen = includesByLang[l].length; });
+      var includes = [];
+      for (var idx = 0; idx < maxLen; idx++) {
+        var item = {};
+        langs.forEach(function(l) {
+          item[l] = includesByLang[l][idx] || '';
+        });
+        includes.push(item);
+      }
 
       var fileInput = card.querySelector('.field-image');
       var file = fileInput && fileInput.files && fileInput.files[0];
@@ -356,25 +418,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!id) {
           SupabaseAPI.addProgram(data).then(function(r) {
             if (!r.error) { loadPrograms(); }
-            else { btn.textContent = 'Error!'; }
+            else { btn.textContent = t('dashboard.error'); }
           });
           return;
         }
         SupabaseAPI.updateProgram(id, data).then(function(r) {
           if (!r.error) {
-            btn.textContent = 'Saved!';
-            setTimeout(function() { btn.textContent = 'Save Changes'; }, 2000);
+            btn.textContent = t('dashboard.saved');
+            setTimeout(function() { btn.textContent = t('dashboard.saveChanges'); }, 2000);
           } else {
-            btn.textContent = 'Error!';
+            btn.textContent = t('dashboard.error');
           }
         });
       }
 
       if (file) {
-        btn.textContent = 'Uploading...';
+        btn.textContent = t('dashboard.uploading');
         var fileName = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '');
         SupabaseAPI.uploadImage(file, fileName).then(function(result) {
-          if (result.error) { btn.textContent = 'Upload Error'; return; }
+          if (result.error) { btn.textContent = t('dashboard.uploadError'); return; }
           var imageUrl = SupabaseAPI.getImageUrl(fileName);
           saveProgram(imageUrl);
         });
@@ -404,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.add('active');
       document.querySelectorAll('.dash-section').forEach(function(s) { s.classList.remove('active'); });
       document.getElementById('section-' + section).classList.add('active');
-      var titles = { reservations: 'Reservations', programs: 'Programs', email: 'Email Configuration' };
+      var titles = { reservations: t('dashboard.reservations'), programs: t('dashboard.programs'), email: t('dashboard.email') };
       document.getElementById('sectionTitle').textContent = titles[section] || section;
     });
   });
@@ -448,16 +510,16 @@ document.addEventListener('DOMContentLoaded', function() {
       smtp_secure: document.getElementById('smtpSecure').value === 'true'
     };
     if (_smtpId) data.id = _smtpId;
-    btn.textContent = 'Saving...';
+    btn.textContent = t('dashboard.saving');
     SupabaseAPI.saveEmailSettings(data).then(function(r) {
-      btn.textContent = 'Save SMTP Settings';
+      btn.textContent = t('dashboard.saveSmtp');
       var status = document.getElementById('smtpStatus');
       if (r.error) {
-        status.textContent = 'Error: ' + r.error.message;
+        status.textContent = t('dashboard.smtpError') + ' ' + r.error.message;
         status.className = 'email-status error';
       } else {
         if (r.data && r.data[0]) _smtpId = r.data[0].id;
-        status.textContent = 'SMTP settings saved successfully!';
+        status.textContent = t('dashboard.smtpSaved');
         status.className = 'email-status success';
         setTimeout(function() { status.textContent = ''; }, 3000);
       }
@@ -467,8 +529,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('testEmailBtn').addEventListener('click', function() {
     var btn = this;
     var user = document.getElementById('smtpUser').value.trim();
-    if (!user) { alert('Enter your Gmail address first.'); return; }
-    btn.textContent = 'Sending...';
+    if (!user) { alert(t('dashboard.enterEmail')); return; }
+    btn.textContent = t('dashboard.sending');
     btn.disabled = true;
     var smtpData = {
       smtp_host: document.getElementById('smtpHost').value.trim(),
@@ -477,16 +539,18 @@ document.addEventListener('DOMContentLoaded', function() {
       smtp_pass: document.getElementById('smtpPass').value,
       from_email: document.getElementById('fromEmail').value.trim() || user
     };
-    SupabaseAPI.sendEmail(user, 'Test Email from SurfAgencyMorocco', '<div style="font-family:sans-serif;padding:40px;background:#1a2e3b;color:#fff"><h1 style="color:#e8631a">Test Successful!</h1><p>Your SMTP configuration is working correctly.</p></div>', smtpData).then(function(r) {
-      btn.textContent = 'Send Test Email';
+    var testSubject = t('dashboard.testSubject');
+    var testBody = t('dashboard.testBody');
+    SupabaseAPI.sendEmail(user, testSubject, testBody, smtpData).then(function(r) {
+      btn.textContent = t('dashboard.testEmail');
       btn.disabled = false;
       var status = document.getElementById('smtpStatus');
       if (r.error) {
         var msg = r.error.error || r.error.message || JSON.stringify(r.error);
-        status.textContent = 'Test failed: ' + msg;
+        status.textContent = t('dashboard.testFailed') + ' ' + msg;
         status.className = 'email-status error';
       } else {
-        status.textContent = 'Test email sent to ' + user + '! Check your inbox.';
+        status.textContent = t('dashboard.testSent') + ' ' + user + '! ' + t('dashboard.checkInbox');
         status.className = 'email-status success';
         setTimeout(function() { status.textContent = ''; }, 5000);
       }
@@ -496,27 +560,19 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderTemplateEditor(t) {
     var id = t.id || '';
     var status = t.status || '';
-    var subject = t.subject || '';
-    var body = t.body_html || '';
     var label = status.charAt(0).toUpperCase() + status.slice(1);
     var statusColors = { pending: '#e65100', confirmed: '#1b5e20', cancelled: '#c62828' };
     var color = statusColors[status] || '#e65100';
     return '<div class="template-card" data-status="' + status + '">' +
       '<div class="template-header" style="border-left:4px solid ' + color + '">' +
         '<span class="status" style="background:' + color + ';color:#fff;text-transform:uppercase">' + label + '</span>' +
-        '<span style="font-size:0.75rem;color:#8899a4">Auto-sent when reservation status changes to <strong>' + label + '</strong></span>' +
+        '<span style="font-size:0.75rem;color:#8899a4">' + t('dashboard.autoSent') + ' <strong>' + label + '</strong></span>' +
       '</div>' +
-      '<div class="field">' +
-        '<label>Subject Line</label>' +
-        '<input class="template-subject" value="' + subject.replace(/"/g,'&quot;') + '" placeholder="e.g. Reservation Confirmed – SurfAgencyMorocco">' +
-      '</div>' +
-      '<div class="field">' +
-        '<label>Email HTML Body</label>' +
-        '<textarea class="template-body" rows="10" placeholder="<html>…</html>">' + body.replace(/"/g,'&quot;') + '</textarea>' +
-      '</div>' +
+      i18nInputsHTML(t('dashboard.subjectLine'), 'template-subject', t.subject, false) +
+      i18nInputsHTML(t('dashboard.emailBody'), 'template-body', t.body_html, true) +
       '<div style="display:flex;gap:8px;align-items:center">' +
-        '<button class="save-btn template-save" data-status="' + status + '">Save Template</button>' +
-        '<button class="save-btn preview-btn template-preview" data-status="' + status + '">Preview</button>' +
+        '<button class="save-btn template-save" data-status="' + status + '">' + t('dashboard.saveTemplate') + '</button>' +
+        '<button class="save-btn preview-btn template-preview" data-status="' + status + '">' + t('dashboard.preview') + '</button>' +
       '</div>' +
     '</div>';
   }
@@ -525,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function() {
     SupabaseAPI.getEmailTemplates().then(function(r) {
       var container = document.getElementById('templatesContainer');
       if (r.error || !r.data || r.data.length === 0) {
-        container.innerHTML = '<div class="dash-empty">No templates found. Default templates will be created on first save.</div>';
+        container.innerHTML = '<div class="dash-empty">' + t('dashboard.noTemplates') + '</div>';
         return;
       }
       var html = '';
@@ -540,10 +596,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var status = btn.getAttribute('data-status');
 
         if (btn.classList.contains('template-preview')) {
-          var subject = card.querySelector('.template-subject').value;
-          var body = card.querySelector('.template-body').value;
+          var subject = readI18nField(card, 'template-subject');
+          var body = readI18nField(card, 'template-body');
+          var previewSubject = subject.en || subject.fr || '';
+          var previewBody = body.en || body.fr || '';
           var w = window.open('', '_blank', 'width=800,height=600');
-          w.document.write('<!DOCTYPE html><html><head><title>' + subject + '</title></head><body>' + body + '</body></html>');
+          w.document.write('<!DOCTYPE html><html><head><title>' + previewSubject + '</title></head><body>' + previewBody + '</body></html>');
           w.document.close();
           return;
         }
@@ -551,15 +609,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (btn.classList.contains('template-save')) {
           var data = {
             status: status,
-            subject: card.querySelector('.template-subject').value.trim(),
-            body_html: card.querySelector('.template-body').value
+            subject: readI18nField(card, 'template-subject'),
+            body_html: readI18nField(card, 'template-body')
           };
-          btn.textContent = 'Saving...';
+          btn.textContent = t('dashboard.saving');
           SupabaseAPI.saveEmailTemplate(data).then(function(r) {
-            btn.textContent = 'Save Template';
+            btn.textContent = t('dashboard.saveTemplate');
             if (!r.error) {
-              btn.textContent = 'Saved!';
-              setTimeout(function() { btn.textContent = 'Save Template'; }, 2000);
+              btn.textContent = t('dashboard.saved');
+              setTimeout(function() { btn.textContent = t('dashboard.saveTemplate'); }, 2000);
             }
           });
         }
