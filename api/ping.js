@@ -1,3 +1,5 @@
+// Executes a real PostgREST query against a dedicated keepalive table
+// to generate actual database activity and prevent project pausing.
 export default function handler(req, res) {
   var start = Date.now();
   var timestamp = new Date().toISOString();
@@ -46,12 +48,16 @@ export default function handler(req, res) {
   var controller = new AbortController();
   var timeoutId = setTimeout(function () { controller.abort(); }, TIMEOUT_MS);
 
-  console.log('[api/ping] Starting — GET /auth/v1/health');
+  var SUPABASE_QUERY_PATH = '/rest/v1/keepalive?select=id&limit=1';
+  var queryUrl = SUPABASE_URL + SUPABASE_QUERY_PATH;
 
-  return fetch(SUPABASE_URL + '/auth/v1/health', {
+  console.log('[api/ping] Starting — GET ' + SUPABASE_QUERY_PATH);
+
+  return fetch(queryUrl, {
     headers: {
       'Content-Type': 'application/json',
-      apikey: SUPABASE_ANON_KEY
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: 'Bearer ' + SUPABASE_ANON_KEY
     },
     signal: controller.signal
   }).then(function (response) {
