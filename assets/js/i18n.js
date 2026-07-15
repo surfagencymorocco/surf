@@ -136,6 +136,17 @@
       if (!['en','fr','pl'].includes(_currentLang)) _currentLang = 'en';
 
       translatePage();
+
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-lang]');
+        if (!btn) return;
+        e.preventDefault();
+        var lang = btn.getAttribute('data-lang');
+        if (lang && lang !== _currentLang) {
+          changeLanguage(lang);
+        }
+      });
+
       _resolveReady();
 
     } catch (err) {
