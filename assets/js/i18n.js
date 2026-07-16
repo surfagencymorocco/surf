@@ -60,13 +60,22 @@
     var cElements = document.querySelectorAll('[data-i18n-content]');
     for (var n = 0; n < cElements.length; n++) {
       var cel = cElements[n];
-      cel.content = window._i18next.t(cel.getAttribute('data-i18n-content'));
+      cel.setAttribute('content', window._i18next.t(cel.getAttribute('data-i18n-content')));
     }
 
     var ariaElements = document.querySelectorAll('[data-i18n-aria-label]');
     for (var q = 0; q < ariaElements.length; q++) {
       var arEl = ariaElements[q];
       arEl.setAttribute('aria-label', window._i18next.t(arEl.getAttribute('data-i18n-aria-label')));
+    }
+
+    document.title = window._i18next.t('meta.title');
+
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.href = _currentLang === 'pl' ? 'https://surfagencymorocco.com/?lang=pl' :
+                       _currentLang === 'fr' ? 'https://surfagencymorocco.com/?lang=fr' :
+                       'https://surfagencymorocco.com/?lang=en';
     }
 
     var langBtns = document.querySelectorAll('[data-lang]');

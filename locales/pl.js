@@ -1,5 +1,8 @@
 export default {
-  "meta.title": "SurfAgencyMorocco — Płyń z Atlantykiem",
+  "meta.title": "SurfAgencyMorocco — Obozy Surfingowe 8 Dni w Maroku | Od 550€",
+  "meta.description": "Obozy surfingowe all-inclusive w Taghazout, Tamraght & Imsouane. 8 dni od 550€. Małe grupy, lokalni instruktorzy. Zarezerwuj swój wyjazd surfingowy do Maroka z Polski.",
+  "meta.ogTitle": "SurfAgencyMorocco — 8-Dniowe Obozy Surfingowe All-Inclusive w Maroku",
+  "meta.ogDescription": "Taghazout, Tamraght & Imsouane. Od 550€ all-inclusive. Małe grupy, lokalni instruktorzy, autentyczne marokańskie surfowanie.",
 
   "nav.surf": "Surf",
   "nav.agency": "Agency",
@@ -43,7 +46,7 @@ export default {
   "destinations.imsouane.badge": "Przyjazny Początkującym",
   "destinations.imsouane.name": "Imsouane",
   "destinations.imsouane.desc": "Dom najdłuższej fali w Afryce — magiczna prawostronna fala o długości 700 metrów, idealna dla początkujących. Spokojna zatoka i atmosfera wioski rybackiej tworzą najbardziej relaksujące doświadczenie surfingowe w Maroku.",
-  "destinations.imsouane.tag1": "🏆 Najdłuższa fala w Afryce",
+  "destinations.imsouane.tag1": "Najdłuższa fala w Afryce",
   "destinations.imsouane.tag2": "Początkujący",
   "destinations.imsouane.tag3": "Wioska rybacka",
 

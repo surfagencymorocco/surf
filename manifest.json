@@ -1,0 +1,19 @@
+{
+  "name": "SurfAgencyMorocco — Surf Camps in Morocco",
+  "short_name": "SurfAgencyMorocco",
+  "description": "8-day all-inclusive surf camps in Taghazout, Tamraght & Imsouane. From 550 EUR. For beginners to advanced surfers.",
+  "start_url": "/?lang=pl",
+  "display": "standalone",
+  "background_color": "#FAF5EC",
+  "theme_color": "#0D3547",
+  "orientation": "portrait-primary",
+  "lang": "pl",
+  "categories": ["travel", "sports"],
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

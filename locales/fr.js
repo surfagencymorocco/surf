@@ -1,5 +1,8 @@
 export default {
-  "meta.title": "SurfAgencyMorocco — Surfez l'Atlantique",
+  "meta.title": "SurfAgencyMorocco — Camps de Surf 8 Jours au Maroc | Dès 550€",
+  "meta.description": "Camps de surf tout inclus à Taghazout, Tamraght & Imsouane. 8 jours dès 550€. Petits groupes, instructeurs locaux. Réservez votre séjour surf au Maroc.",
+  "meta.ogTitle": "SurfAgencyMorocco — Camps de Surf Tout Inclus 8 Jours au Maroc",
+  "meta.ogDescription": "Taghazout, Tamraght & Imsouane. Dès 550€ tout inclus. Petits groupes, instructeurs locaux, expérience surf marocaine authentique.",
 
   "nav.surf": "Surf",
   "nav.agency": "Agency",
@@ -43,7 +46,7 @@ export default {
   "destinations.imsouane.badge": "Idéal Débutants",
   "destinations.imsouane.name": "Imsouane",
   "destinations.imsouane.desc": "La plus longue vague d'Afrique — une droite magique de 700 mètres parfaite pour les débutants. La baie tranquille et l'atmosphère de village de pêcheurs créent l'expérience de surf la plus relaxante du Maroc.",
-  "destinations.imsouane.tag1": "🏆 Plus longue vague d'Afrique",
+  "destinations.imsouane.tag1": "Plus longue vague d'Afrique",
   "destinations.imsouane.tag2": "Débutants",
   "destinations.imsouane.tag3": "Village de pêcheurs",
 

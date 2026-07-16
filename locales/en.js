@@ -1,5 +1,8 @@
 export default {
-  "meta.title": "SurfAgencyMorocco — Ride the Atlantic",
+  "meta.title": "SurfAgencyMorocco — 8-Day Surf Camps in Morocco | From €550",
+  "meta.description": "All-inclusive surf camps in Taghazout, Tamraght & Imsouane. 8 days from €550. Small groups, local instructors. Book your Morocco surf trip from Poland & Europe.",
+  "meta.ogTitle": "SurfAgencyMorocco — 8-Day All-Inclusive Surf Camps in Morocco",
+  "meta.ogDescription": "Taghazout, Tamraght & Imsouane. From €550 all-inclusive. Small groups, local instructors, authentic Moroccan surf experience.",
 
   "nav.surf": "Surf",
   "nav.agency": "Agency",
@@ -43,7 +46,7 @@ export default {
   "destinations.imsouane.badge": "Beginner Friendly",
   "destinations.imsouane.name": "Imsouane",
   "destinations.imsouane.desc": "Home to the longest wave in Africa — a magical 700-metre right-hander perfect for beginners. The relaxed bay and fishing village atmosphere create the most chill surf experience in Morocco.",
-  "destinations.imsouane.tag1": "🏆 Longest wave in Africa",
+  "destinations.imsouane.tag1": "Longest wave in Africa",
   "destinations.imsouane.tag2": "Beginners",
   "destinations.imsouane.tag3": "Fishing village",
 
