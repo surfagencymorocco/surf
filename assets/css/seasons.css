@@ -32,3 +32,7 @@
 @media(max-width:900px){
   .seasons-grid { grid-template-columns:1fr; }
 }
+@media(max-width:480px){
+  .season-card { padding: 28px 20px; }
+  .season-card h3 { font-size: 1.5rem; }
+}

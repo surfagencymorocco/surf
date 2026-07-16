@@ -9,7 +9,7 @@ footer {
 }
 .footer-brand .footer-logo svg { width: 28px; height: 28px; color: var(--sunset); }
 .footer-brand .footer-logo span { color:var(--sunset); }
-.footer-brand p { font-size:0.88rem; line-height:1.65; max-width:280px; }
+.footer-brand p { font-size:0.88rem; line-height:1.65; max-width:100%; }
 .footer-col h5 {
   font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase;
   color:var(--sunset-gold); font-weight:700; margin-bottom:18px;
@@ -19,7 +19,7 @@ footer {
 .footer-col li a svg, .footer-col > a svg { width: 14px; height: 14px; opacity: 0.5; }
 .footer-col li a:hover, .footer-col > a:hover { color:var(--white); }
 .footer-col-cta { margin-top:24px; }
-.footer-company-info { font-size:0.78rem; opacity:0.6; margin-top:20px; max-width:320px; line-height:1.6; }
+.footer-company-info { font-size:0.78rem; opacity:0.6; margin-top:20px; max-width:100%; line-height:1.6; }
 .social-row { display:flex; gap:12px; margin-top:20px; }
 .social-btn {
   width:40px; height:40px; border-radius:50%;
@@ -62,5 +62,9 @@ footer {
   .footer-grid { grid-template-columns:1fr 1fr; }
 }
 @media(max-width:680px){
+  footer { padding:48px 5% 24px; }
   .footer-grid { grid-template-columns:1fr; gap:36px; }
+  .footer-bottom { flex-direction:column; text-align:center; align-items:center; }
+  .whatsapp-float { bottom:20px; right:16px; width:52px; height:52px; }
+  .whatsapp-float svg { width:24px; height:24px; }
 }

@@ -1,5 +1,5 @@
 #destinations { background: var(--sand-light); }
-.dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-top: 60px; }
+.dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 60px; }
 .dest-card {
   border-radius: var(--radius); overflow: hidden;
   background: var(--white); box-shadow: 0 4px 30px rgba(27,94,122,0.08);
@@ -91,7 +91,13 @@
   .gallery-strip { height: 200px; }
 }
 @media(max-width:680px){
+  .dest-grid { gap: 20px; margin-top: 40px; }
+  .dest-body { padding: 20px; }
   .gallery-strip { height: 140px; }
   .gallery-strip-item { flex: 0 0 100px; }
   .gallery-strip-item:hover { flex: 0 0 140px; }
+}
+@media(max-width:400px){
+  .dest-grid { grid-template-columns: 1fr; }
+  .dest-body h3 { font-size: 1.6rem; }
 }

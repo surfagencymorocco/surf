@@ -123,11 +123,23 @@ select.email-input { appearance: none; -webkit-appearance: none; -moz-appearance
 
 @media(max-width:768px){
   .dashboard { flex-direction: column; }
-  .dash-sidebar { width: 100%; padding: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .dash-logo { margin-bottom: 0; }
-  .dash-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dash-sidebar { width: 100%; padding: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .dash-logo { margin-bottom: 0; font-size: 1.3rem; }
+  .dash-nav { display: flex; gap: 6px; flex-wrap: wrap; }
   .dash-nav li { margin-bottom: 0; }
+  .dash-nav a { padding: 8px 12px; font-size: 0.8rem; }
   .dash-nav .logout-link { margin-top: 0; margin-left: auto; }
-  .dash-main { padding: 24px 16px; }
+  .dash-main { padding: 20px 14px; }
   .dash-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .field-row { grid-template-columns: 1fr; }
+}
+
+@media(max-width:480px){
+  .login-card { padding: 32px 20px; }
+  .login-logo { font-size: 1.6rem; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .dash-section-header { flex-direction: column; align-items: stretch; }
+  .dash-main { padding: 16px 10px; }
+  .dash-header h1 { font-size: 1.3rem; }
+  .dash-table-wrap { margin: 0 -10px; border-radius: 0; }
 }

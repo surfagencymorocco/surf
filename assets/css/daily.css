@@ -39,6 +39,11 @@
 
 @media(max-width:900px){
   .daily-inner { grid-template-columns:1fr; gap:40px; }
-  .daily-img-main { height:300px; }
+  .daily-img-main { height: clamp(200px, 40vw, 300px); }
   .daily-img-secondary { display: none; }
+  .daily-accent { position:static; max-width:100%; margin-top:16px; }
+}
+@media(max-width:480px){
+  .timeline-item { gap: 14px; }
+  .tl-content { padding-bottom: 20px; }
 }

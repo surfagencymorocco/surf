@@ -1,7 +1,7 @@
 #programs { background: var(--sand); }
 .section-desc--narrow { max-width: 380px; font-size: 0.95rem; }
 .programs-intro { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 60px; }
-.programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
 .program-card {
   background: var(--white); border-radius: var(--radius); overflow: hidden;
   box-shadow: 0 4px 30px rgba(27,94,122,0.08);
@@ -70,3 +70,13 @@
 }
 .btn-book svg { width: 16px; height: 16px; }
 .btn-book:hover { background: var(--sunset-warm); transform: translateY(-1px); }
+
+@media(max-width:680px){
+  .programs-intro { margin-bottom: 40px; }
+  .program-header { height: 180px; }
+  .program-body { padding: 20px; }
+  .program-name { font-size: 1.6rem; }
+}
+@media(max-width:400px){
+  .programs-grid { grid-template-columns: 1fr; }
+}

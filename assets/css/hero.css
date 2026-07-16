@@ -1,5 +1,5 @@
 #hero {
-  min-height: 100vh; position: relative;
+  min-height: 100svh; position: relative;
   padding: 0 5%;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
@@ -12,8 +12,8 @@
   top: 50%; left: 50%;
   width: 100vw;
   height: 56.25vw;
-  min-height: 100vh;
-  min-width: 177.78vh;
+  min-height: 100svh;
+  min-width: 177.78svh;
   transform: translate(-50%, -50%);
 }
 .hero-overlay {

@@ -74,7 +74,7 @@ body {
 
 .divider { width: 50px; height: 3px; background: var(--sunset); border-radius: 2px; margin: 20px 0; }
 
-section { padding: 59px 5%; }
+section { padding: 60px 5%; }
 
 .section-tag--light { color: var(--sunset-gold); }
 .section-tag--light svg { color: var(--sunset-gold); }
