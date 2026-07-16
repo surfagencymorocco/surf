@@ -90,11 +90,17 @@
       _currentLang = lang;
       try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
       translatePage();
+      window.dispatchEvent(new CustomEvent('i18n:languageChanged', { detail: { lang: lang } }));
     });
   }
 
   function t(key, options) {
-    return window._i18next ? window._i18next.t(key, options) : (key || '');
+    if (!window._i18next) return '';
+    if (!window._i18next.exists(key)) {
+      console.warn('[i18n] Missing translation key: ' + key);
+      return '';
+    }
+    return window._i18next.t(key, options);
   }
 
   window.i18n = {
@@ -157,6 +163,7 @@
       });
 
       _resolveReady();
+      window.dispatchEvent(new CustomEvent('i18n:ready', { detail: { lang: _currentLang } }));
 
     } catch (err) {
       console.error('[i18n] Init failed:', err);
