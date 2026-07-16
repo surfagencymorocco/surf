@@ -1,5 +1,6 @@
 (function() {
   var submitBtn = document.getElementById('submitBtn');
+  if (!submitBtn) return;
   var originalHtml = submitBtn.innerHTML;
 
   submitBtn.addEventListener('click', function() {

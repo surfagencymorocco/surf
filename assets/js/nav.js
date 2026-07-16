@@ -2,6 +2,7 @@
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   var closeMenu = document.getElementById('closeMenu');
+  if (!hamburger || !mobileMenu || !closeMenu) return;
   hamburger.addEventListener('click', function() { mobileMenu.classList.add('open'); });
   closeMenu.addEventListener('click', function() { mobileMenu.classList.remove('open'); });
   document.querySelectorAll('.mob-link').forEach(function(link) {

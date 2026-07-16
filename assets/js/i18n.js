@@ -85,7 +85,7 @@
   }
 
   function t(key, options) {
-    return window._i18next.t(key, options);
+    return window._i18next ? window._i18next.t(key, options) : (key || '');
   }
 
   window.i18n = {

@@ -1,6 +1,18 @@
 (function() {
+  var _attempts = 0;
+  var _MAX = 35;
+
   function loadPrograms() {
+    _attempts++;
+    if (window._supabaseLoadError) {
+      console.error('[Programs] Supabase SDK load error. Using static HTML fallback.');
+      return;
+    }
     if (!window._supabase) {
+      if (_attempts >= _MAX) {
+        console.error('[Programs] Timeout: Supabase SDK not loaded. Using static HTML fallback.');
+        return;
+      }
       setTimeout(loadPrograms, 300);
       return;
     }

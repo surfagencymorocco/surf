@@ -124,22 +124,51 @@
 <script defer src="../assets/js/supabase-client.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  var _authAttempts = 0;
+  var _AUTH_MAX = 50;
+
   function checkAuth() {
+    _authAttempts++;
+    console.log('[Dashboard] Waiting for Supabase SDK... attempt ' + _authAttempts + '/' + _AUTH_MAX);
+
+    if (window._supabaseLoadError) {
+      console.error('[Dashboard] Supabase SDK load error: ' + window._supabaseLoadError);
+      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;color:#c62828;padding:24px">Connection error. Please check your internet and refresh the page.</div>';
+      return;
+    }
+
     if (!window._supabase) {
+      if (_authAttempts >= _AUTH_MAX) {
+        console.error('[Dashboard] Timeout after ' + _AUTH_MAX + ' attempts (~10s)');
+        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;color:#c62828;padding:24px">Connection error. Please check your internet and refresh the page.</div>';
+        return;
+      }
       setTimeout(checkAuth, 200);
       return;
     }
+
+    console.log('[Dashboard] Supabase SDK ready. Checking auth...');
     SupabaseAPI.getUser().then(function(result) {
       if (result.error || !result.data || !result.data.user) {
+        console.log('[Dashboard] No active session. Redirecting to login.');
         window.location.href = 'index.html';
       } else {
+        console.log('[Dashboard] Authenticated as: ' + result.data.user.email);
         document.getElementById('userEmail').textContent = result.data.user.email;
         loadReservations();
         loadPrograms();
         loadEmailConfig();
         loadEmailTemplates();
       }
+    }).catch(function(err) {
+      console.error('[Dashboard] Auth check failed: ' + (err && err.message ? err.message : err));
+      window.location.href = 'index.html';
     });
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function t(key, fallback) {
@@ -175,13 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
       data.forEach(function(r) {
         html += '<tr>';
         html += '<td>' + formatDate(r.created_at) + '</td>';
-        html += '<td><strong>' + (r.full_name || '—') + '</strong></td>';
-        html += '<td>' + (r.email || '—') + '</td>';
-        html += '<td>' + (r.phone || '—') + '</td>';
-        html += '<td>' + (r.surf_level || '—') + '</td>';
-        html += '<td>' + (r.destination || '—') + '</td>';
-        html += '<td>' + (r.preferred_date || '—') + '</td>';
-        html += '<td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + (r.message || '—') + '</td>';
+        html += '<td><strong>' + escHtml(r.full_name || '\u2014') + '</strong></td>';
+        html += '<td>' + escHtml(r.email || '\u2014') + '</td>';
+        html += '<td>' + escHtml(r.phone || '\u2014') + '</td>';
+        html += '<td>' + escHtml(r.surf_level || '\u2014') + '</td>';
+        html += '<td>' + escHtml(r.destination || '\u2014') + '</td>';
+        html += '<td>' + escHtml(r.preferred_date || '\u2014') + '</td>';
+        html += '<td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + escHtml(r.message || '\u2014') + '</td>';
         html += '<td>' + renderStatusBadge(r.status) + '</td>';
         html += '<td class="dash-actions">';
         html += '<select class="actions-dropdown" data-id="' + r.id + '" data-current="' + (r.status || 'pending') + '">';
@@ -198,6 +227,9 @@ document.addEventListener('DOMContentLoaded', function() {
         html += '</tr>';
       });
       tbody.innerHTML = html;
+
+      if (tbody._changeBound) return;
+      tbody._changeBound = true;
 
       function sendStatusEmail(reservation, newStatus) {
         SupabaseAPI.getEmailSettings().then(function(sr) {
@@ -282,8 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var dates = (p.dates && Array.isArray(p.dates)) ? p.dates.join(', ') : (p.dates || '');
     var includesVal = p.includes;
     var image = p.image || '';
-    var isNew = id === '';
-    var saveLabel = isNew ? 'Create Program' : 'Save Changes';
     var previewId = 'preview-' + (id || 'new');
     var preview = image ? '<img id="' + previewId + '" src="' + image.replace(/"/g,'&quot;') + '" class="preview-img" onerror="this.style.display=\'none\'">' : '<div id="' + previewId + '" class="preview-img" style="display:none;background:#1e2a36"></div>';
 
@@ -332,6 +362,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function bindProgramEvents() {
     var grid = document.getElementById('programsGrid');
+    if (grid._eventsBound) return;
+    grid._eventsBound = true;
 
     // File input preview
     grid.addEventListener('change', function(e) {
@@ -465,7 +497,8 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.dash-nav a').forEach(function(a) { a.classList.remove('active'); });
       this.classList.add('active');
       document.querySelectorAll('.dash-section').forEach(function(s) { s.classList.remove('active'); });
-      document.getElementById('section-' + section).classList.add('active');
+      var target = document.getElementById('section-' + section);
+      if (target) target.classList.add('active');
       var titles = { reservations: t('dashboard.reservations'), programs: t('dashboard.programs'), email: t('dashboard.email') };
       document.getElementById('sectionTitle').textContent = titles[section] || section;
     });
@@ -475,6 +508,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('logoutBtn').addEventListener('click', function(e) {
     e.preventDefault();
     SupabaseAPI.logout().then(function() {
+      window.location.href = 'index.html';
+    }).catch(function() {
       window.location.href = 'index.html';
     });
   });
@@ -523,6 +558,11 @@ document.addEventListener('DOMContentLoaded', function() {
         status.className = 'email-status success';
         setTimeout(function() { status.textContent = ''; }, 3000);
       }
+    }).catch(function(err) {
+      btn.textContent = t('dashboard.saveSmtp');
+      var status = document.getElementById('smtpStatus');
+      status.textContent = t('dashboard.smtpError') + ' ' + (err && err.message ? err.message : 'Network error');
+      status.className = 'email-status error';
     });
   });
 
@@ -554,12 +594,18 @@ document.addEventListener('DOMContentLoaded', function() {
         status.className = 'email-status success';
         setTimeout(function() { status.textContent = ''; }, 5000);
       }
+    }).catch(function(err) {
+      btn.textContent = t('dashboard.testEmail');
+      btn.disabled = false;
+      var status = document.getElementById('smtpStatus');
+      status.textContent = t('dashboard.testFailed') + ' ' + (err && err.message ? err.message : 'Network error');
+      status.className = 'email-status error';
     });
   });
 
-  function renderTemplateEditor(t) {
-    var id = t.id || '';
-    var status = t.status || '';
+  function renderTemplateEditor(tmpl) {
+    var id = tmpl.id || '';
+    var status = tmpl.status || '';
     var label = status.charAt(0).toUpperCase() + status.slice(1);
     var statusColors = { pending: '#e65100', confirmed: '#1b5e20', cancelled: '#c62828' };
     var color = statusColors[status] || '#e65100';
@@ -568,8 +614,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '<span class="status" style="background:' + color + ';color:#fff;text-transform:uppercase">' + label + '</span>' +
         '<span style="font-size:0.75rem;color:#8899a4">' + t('dashboard.autoSent') + ' <strong>' + label + '</strong></span>' +
       '</div>' +
-      i18nInputsHTML(t('dashboard.subjectLine'), 'template-subject', t.subject, false) +
-      i18nInputsHTML(t('dashboard.emailBody'), 'template-body', t.body_html, true) +
+      i18nInputsHTML(t('dashboard.subjectLine'), 'template-subject', tmpl.subject, false) +
+      i18nInputsHTML(t('dashboard.emailBody'), 'template-body', tmpl.body_html, true) +
       '<div style="display:flex;gap:8px;align-items:center">' +
         '<button class="save-btn template-save" data-status="' + status + '">' + t('dashboard.saveTemplate') + '</button>' +
         '<button class="save-btn preview-btn template-preview" data-status="' + status + '">' + t('dashboard.preview') + '</button>' +

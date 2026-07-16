@@ -44,19 +44,49 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.disabled = true;
     btn.textContent = (window.i18n && window.i18n.t('login.signingIn')) || 'Signing in...';
 
+    var attempts = 0;
+    var MAX_ATTEMPTS = 50;
+
     function doLogin() {
+      attempts++;
+      console.log('[Login] Waiting for Supabase SDK... attempt ' + attempts + '/' + MAX_ATTEMPTS);
+
+      if (window._supabaseLoadError) {
+        console.error('[Login] Supabase SDK load error: ' + window._supabaseLoadError);
+        error.textContent = window._supabaseLoadError;
+        btn.disabled = false;
+        btn.textContent = (window.i18n && window.i18n.t('login.signIn')) || 'Sign In';
+        return;
+      }
+
       if (!window._supabase) {
+        if (attempts >= MAX_ATTEMPTS) {
+          console.error('[Login] Timeout: Supabase SDK did not load after ' + MAX_ATTEMPTS + ' attempts (~10s)');
+          error.textContent = 'Connection error. Please check your internet and try refreshing the page.';
+          btn.disabled = false;
+          btn.textContent = (window.i18n && window.i18n.t('login.signIn')) || 'Sign In';
+          return;
+        }
         setTimeout(doLogin, 200);
         return;
       }
+
+      console.log('[Login] Supabase SDK ready. Attempting sign-in for: ' + email.value.replace(/(.{2}).+(@.+)/, '$1***$2'));
       SupabaseAPI.login(email.value, password.value).then(function(result) {
         if (result.error) {
+          console.error('[Login] Sign-in failed: ' + result.error.message);
           error.textContent = result.error.message;
           btn.disabled = false;
           btn.textContent = (window.i18n && window.i18n.t('login.signIn')) || 'Sign In';
         } else {
+          console.log('[Login] Sign-in successful. Redirecting to dashboard...');
           window.location.href = 'dashboard.html';
         }
+      }).catch(function(err) {
+        console.error('[Login] Unexpected error: ' + (err && err.message ? err.message : err));
+        error.textContent = 'An unexpected error occurred. Please try again.';
+        btn.disabled = false;
+        btn.textContent = (window.i18n && window.i18n.t('login.signIn')) || 'Sign In';
       });
     }
     doLogin();

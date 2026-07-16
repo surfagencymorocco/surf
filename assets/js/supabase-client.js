@@ -2,12 +2,63 @@
   var SUPABASE_URL = 'https://gfcpxdxfshopclfmnfnk.supabase.co';
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmY3B4ZHhmc2hvcGNsZm1uZm5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3MjIyOTcsImV4cCI6MjA5ODI5ODI5N30.nchqNdd9MItMGsW-85SjFXaRE5z0425yYOukCTjzljo';
 
-  var script = document.createElement('script');
-  script.src = 'https://unpkg.com/@supabase/supabase-js@2';
-  script.onload = function() {
-    window._supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  };
-  document.head.appendChild(script);
+  var me = document.currentScript;
+  var basePath = me && me.src ? me.src.replace(/\/supabase-client\.js.*$/, '') : '/assets/js';
+  var LOCAL_SDK = basePath + '/vendor/supabase.min.js';
+
+  var CDN_ATTEMPTS = [
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js',
+    'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js',
+    'https://unpkg.com/@supabase/supabase-js@2'
+  ];
+
+  window._supabaseLoadError = null;
+  var SOURCES = [LOCAL_SDK].concat(CDN_ATTEMPTS);
+
+  function tryLoadCdn(index) {
+    if (index >= SOURCES.length) {
+      console.error('[Supabase] All sources failed (' + SOURCES.length + ' tried). Login will not work.');
+      window._supabaseLoadError = 'Could not load Supabase SDK. Check your internet connection or firewall.';
+      return;
+    }
+    var url = SOURCES[index];
+    var sourceLabel = index === 0 ? 'local' : ('CDN ' + index);
+    console.log('[Supabase] Trying ' + sourceLabel + '/' + SOURCES.length + ': ' + url);
+    var script = document.createElement('script');
+    script.src = url;
+    var settled = false;
+    var timeoutId = setTimeout(function() {
+      if (settled) return;
+      settled = true;
+      console.error('[Supabase] Timeout after 10s from: ' + url);
+      script.remove();
+      tryLoadCdn(index + 1);
+    }, 10000);
+    script.onload = function() {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutId);
+      if (typeof supabase === 'undefined' || !supabase.createClient) {
+        console.error('[Supabase] Source loaded but "supabase" global not found. Trying next...');
+        script.remove();
+        tryLoadCdn(index + 1);
+        return;
+      }
+      console.log('[Supabase] SDK loaded successfully from ' + sourceLabel);
+      window._supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    };
+    script.onerror = function() {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutId);
+      console.error('[Supabase] Failed to load from: ' + url);
+      script.remove();
+      tryLoadCdn(index + 1);
+    };
+    document.head.appendChild(script);
+  }
+
+  tryLoadCdn(0);
 
   window.SupabaseAPI = {
     submitReservation: function(data) {
