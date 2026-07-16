@@ -84,6 +84,16 @@
             '<ul class="program-includes">' + includesHtml + '</ul>' +
             '<div class="program-cta">' +
               '<a href="#booking" class="btn-book">' + bookLabel + ' <svg><use href="#icon-arrow"/></svg></a>' +
+              (function() {
+                var currentLang = (window.i18n && window.i18n.currentLang) || 'en';
+                var brochureUrl = null;
+                if (currentLang === 'fr') brochureUrl = p.brochure_fr;
+                else if (currentLang === 'pl') brochureUrl = p.brochure_pl;
+                else brochureUrl = p.brochure_en;
+                if (!brochureUrl) return '';
+                var brochureLabel = i18n ? i18n.t('programs.downloadBrochure') : 'Download Brochure';
+                return '<a href="' + brochureUrl.replace(/"/g,'&quot;') + '" target="_blank" rel="noopener noreferrer" class="btn-brochure">' + brochureLabel + ' <svg><use href="#icon-arrow"/></svg></a>';
+              })() +
             '</div>' +
           '</div>' +
         '</div>';

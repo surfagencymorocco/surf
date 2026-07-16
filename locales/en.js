@@ -89,6 +89,7 @@ export default {
   "programs.card.includes": "What's Included",
   "programs.card.bookCamp": "Book This Camp",
   "programs.card.bookTrip": "Book This Trip",
+  "programs.downloadBrochure": "📄 Download Brochure",
 
   "daily.accent1": "\"Live the wave,",
   "daily.accent2": "breathe Morocco\"",
@@ -282,6 +283,20 @@ export default {
   "dashboard.emailBody": "Email HTML Body",
   "dashboard.autoSent": "Auto-sent when reservation status changes to",
   "dashboard.programsCount": "{n} program | {n} programs",
+
+  "dashboard.brochuresTitle": "📄 Brochures (PDF)",
+  "dashboard.brochureFr": "French Brochure",
+  "dashboard.brochureEn": "English Brochure",
+  "dashboard.brochurePl": "Polish Brochure",
+  "dashboard.choosePdf": "Choose PDF",
+  "dashboard.uploaded": "✓ Uploaded",
+  "dashboard.noBrochure": "No brochure",
+  "dashboard.replacePdf": "Replace",
+  "dashboard.downloadPdf": "Download",
+  "dashboard.deletePdf": "Delete",
+  "dashboard.deleteBrochureConfirm": "Are you sure you want to delete this brochure?",
+  "dashboard.brochureValidationPdf": "Only PDF files are accepted.",
+  "dashboard.brochureValidationSize": "PDF file must be under 20 MB.",
 
   "login.adminTitle": "Admin Panel",
   "login.email": "Email",

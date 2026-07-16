@@ -89,6 +89,7 @@ export default {
   "programs.card.includes": "Co Jest Wliczone",
   "programs.card.bookCamp": "Zarezerwuj Obóz",
   "programs.card.bookTrip": "Zarezerwuj Wyprawę",
+  "programs.downloadBrochure": "📄 Pobierz broszurę",
 
   "daily.accent1": "\"Żyj falą,",
   "daily.accent2": "oddychaj Marokiem\"",
@@ -282,6 +283,20 @@ export default {
   "dashboard.emailBody": "Treść HTML",
   "dashboard.autoSent": "Wysyłane automatycznie po zmianie statusu na",
   "dashboard.programsCount": "{n} program | {n} programy | {n} programów",
+
+  "dashboard.brochuresTitle": "📄 Broszury (PDF)",
+  "dashboard.brochureFr": "Broszura Francuska",
+  "dashboard.brochureEn": "Broszura Angielska",
+  "dashboard.brochurePl": "Broszura Polska",
+  "dashboard.choosePdf": "Wybierz PDF",
+  "dashboard.uploaded": "✓ Przesłano",
+  "dashboard.noBrochure": "Brak broszury",
+  "dashboard.replacePdf": "Zastąp",
+  "dashboard.downloadPdf": "Pobierz",
+  "dashboard.deletePdf": "Usuń",
+  "dashboard.deleteBrochureConfirm": "Czy na pewno chcesz usunąć tę broszurę?",
+  "dashboard.brochureValidationPdf": "Akceptowane są tylko pliki PDF.",
+  "dashboard.brochureValidationSize": "Plik PDF musi być mniejszy niż 20 MB.",
 
   "login.adminTitle": "Panel administracyjny",
   "login.email": "Email",

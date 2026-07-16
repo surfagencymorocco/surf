@@ -91,10 +91,30 @@
         ? window._supabase.storage.from('program-images').upload(fileName, file, { upsert: true }).then(function(r) { return r; })
         : Promise.reject(new Error('Supabase not loaded'));
     },
+    uploadBrochure: function(file, fileName) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').upload('brochures/' + fileName, file, { upsert: true }).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
     getImageUrl: function(path) {
       return window._supabase
         ? window._supabase.storage.from('program-images').getPublicUrl(path).data.publicUrl
         : '';
+    },
+    getBrochureUrl: function(fileName) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').getPublicUrl('brochures/' + fileName).data.publicUrl
+        : '';
+    },
+    deleteBrochure: function(path) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').remove([path]).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
+    },
+    deleteImage: function(path) {
+      return window._supabase
+        ? window._supabase.storage.from('program-images').remove([path]).then(function(r) { return r; })
+        : Promise.reject(new Error('Supabase not loaded'));
     },
     addProgram: function(data) {
       return window._supabase

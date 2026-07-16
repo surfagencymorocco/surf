@@ -308,35 +308,95 @@ document.addEventListener('DOMContentLoaded', function() {
     return result;
   }
 
+  var _tempIdCounter = 0;
+
   function programCardHTML(p) {
     var id = p.id || '';
+    var uid = id || ('new-' + Date.now() + '-' + (++_tempIdCounter));
     var price = p.price || '';
     var dates = (p.dates && Array.isArray(p.dates)) ? p.dates.join(', ') : (p.dates || '');
     var includesVal = p.includes;
     var image = p.image || '';
-    var previewId = 'preview-' + (id || 'new');
+    var brochureFr = p.brochure_fr || '';
+    var brochureEn = p.brochure_en || '';
+    var brochurePl = p.brochure_pl || '';
+    var previewId = 'preview-' + uid;
     var preview = image ? '<img id="' + previewId + '" src="' + image.replace(/"/g,'&quot;') + '" class="preview-img" onerror="this.style.display=\'none\'">' : '<div id="' + previewId + '" class="preview-img" style="display:none;background:#1e2a36"></div>';
 
     var enLevel = readJsonbValue(p.level, 'en').toLowerCase();
     var isNew = id === '';
     var saveLabel = isNew ? t('dashboard.createProgram') : t('dashboard.saveChanges');
 
-    return '<div class="program-card-admin" data-id="' + id + '" data-original-image="' + image.replace(/"/g,'&quot;') + '">' +
-      preview +
+    function brochureRow(lang, label, currentUrl) {
+      var uniqueId = 'brochure-' + lang + '-' + uid;
+      var hasFile = !!currentUrl;
+      var fileName = hasFile ? currentUrl.split('/').pop() : '';
+      var statusBadge = hasFile
+        ? '<span class="brochure-badge uploaded">' + t('dashboard.uploaded') + '</span>'
+        : '<span class="brochure-badge empty">' + t('dashboard.noBrochure') + '</span>';
+      var labelText = hasFile ? t('dashboard.replacePdf') : t('dashboard.choosePdf');
+      var fileNameHtml = hasFile
+        ? '<span class="brochure-filename-display" title="' + fileName.replace(/"/g,'&quot;') + '">' + fileName + '</span>'
+        : '';
+      var actionsHtml = hasFile
+        ? '<div class="brochure-card-actions">' +
+            '<a href="' + currentUrl.replace(/"/g,'&quot;') + '" target="_blank" rel="noopener noreferrer" class="brochure-btn-outline">' + t('dashboard.downloadPdf') + '</a>' +
+            '<button type="button" class="brochure-btn-danger" data-action="delete-brochure" data-lang="' + lang + '" data-program="' + id + '">' + t('dashboard.deletePdf') + '</button>' +
+          '</div>'
+        : '';
+      return '<div class="brochure-card">' +
+        '<div class="brochure-card-header">' +
+          '<span class="brochure-flag">' + (lang === 'fr' ? '🇫🇷' : lang === 'en' ? '🇬🇧' : '🇵🇱') + '</span>' +
+          '<span class="brochure-label">' + label + '</span>' +
+          statusBadge +
+        '</div>' +
+        '<div class="brochure-card-body">' +
+          '<div class="file-input-wrap">' +
+            '<input type="file" accept=".pdf,application/pdf" class="field-brochure field-brochure-' + lang + '" id="' + uniqueId + '" data-lang="' + lang + '">' +
+            '<label class="file-input-label" for="' + uniqueId + '">' + labelText + '</label>' +
+            fileNameHtml +
+          '</div>' +
+          actionsHtml +
+        '</div>' +
+        '<span class="file-input-name brochure-fname" id="fname-' + uniqueId + '" style="display:none"></span>' +
+      '</div>';
+    }
+
+    return '<div class="program-card-admin" data-id="' + id + '" data-original-image="' + image.replace(/"/g,'&quot;') + '" data-original-brochure-fr="' + brochureFr.replace(/"/g,'&quot;') + '" data-original-brochure-en="' + brochureEn.replace(/"/g,'&quot;') + '" data-original-brochure-pl="' + brochurePl.replace(/"/g,'&quot;') + '">' +
+      // ── NAME + DESTINATION ──
       i18nInputsHTML(t('dashboard.programName'), 'field-name', p.name, false) +
       i18nInputsHTML(t('dashboard.programDest'), 'field-dest', p.destination, false) +
+      // ── LEVEL + PRICE ──
       '<div class="field"><label>' + t('dashboard.programLevel') + '</label><select class="field-level">' +
         '<option value="fr:Débutant,en:Beginner,pl:Początkujący"' + (enLevel === 'beginner' ? ' selected' : '') + '>Beginner</option>' +
         '<option value="fr:Intermédiaire,en:Intermediate,pl:Średniozaawansowany"' + (enLevel === 'intermediate' ? ' selected' : '') + '>Intermediate</option>' +
         '<option value="fr:Avancé,en:Advanced,pl:Zaawansowany"' + (enLevel === 'advanced' ? ' selected' : '') + '>Advanced</option>' +
       '</select></div>' +
       '<div class="field"><label>' + t('dashboard.programPrice') + '</label><input type="number" class="field-price" value="' + price + '"></div>' +
-      '<div class="field"><label>' + t('dashboard.programImage') + '</label><div class="file-input-wrap"><input type="file" accept="image/*" class="field-image" id="file-' + (id || 'new') + '" data-preview="' + previewId + '"><label class="file-input-label" for="file-' + (id || 'new') + '">' + t('dashboard.chooseImage') + '</label><span class="file-input-name" id="fname-' + (id || 'new') + '">' + t('dashboard.noFile') + '</span></div></div>' +
+      // ── IMAGE ──
+      '<div class="field">' +
+        '<label>' + t('dashboard.programImage') + '</label>' +
+        preview +
+        '<div class="file-input-wrap">' +
+          '<input type="file" accept="image/*" class="field-image" id="file-' + uid + '" data-preview="' + previewId + '">' +
+          '<label class="file-input-label" for="file-' + uid + '">' + (image ? t('dashboard.replacePdf') : t('dashboard.chooseImage')) + '</label>' +
+          '<span class="file-input-name" id="fname-' + uid + '">' + (image ? image.split('/').pop() : t('dashboard.noFile')) + '</span>' +
+        '</div>' +
+      '</div>' +
+      // ── BROCHURES ──
+      '<div class="field"><div class="brochure-section-title">' + t('dashboard.brochuresTitle') + '</div>' +
+        brochureRow('fr', t('dashboard.brochureFr'), brochureFr) +
+        brochureRow('en', t('dashboard.brochureEn'), brochureEn) +
+        brochureRow('pl', t('dashboard.brochurePl'), brochurePl) +
+      '</div>' +
+      // ── DATES ──
       '<div class="field"><label>' + t('dashboard.programDates') + '</label><input class="field-dates" value="' + dates.replace(/"/g,'&quot;') + '"></div>' +
+      // ── INCLUDES ──
       i18nInputsHTML(t('dashboard.programIncludes'), 'field-includes', includesVal, true) +
+      // ── ACTIONS ──
       '<div class="dash-btn-group">' +
         '<button class="save-btn" data-id="' + id + '">' + saveLabel + '</button>' +
-        (isNew ? '' : '<button class="btn-delete" data-id="' + id + '" data-action="delete-program">Delete</button>') +
+        (isNew ? '' : '<button class="btn-delete" data-id="' + id + '" data-action="delete-program">' + t('dashboard.deletePdf') + '</button>') +
       '</div>' +
     '</div>';
   }
@@ -365,10 +425,43 @@ document.addEventListener('DOMContentLoaded', function() {
     if (grid._eventsBound) return;
     grid._eventsBound = true;
 
-    // File input preview
+    // File input preview (image) + brochure validation
     grid.addEventListener('change', function(e) {
       var input = e.target;
-      if (!input.classList.contains('field-image')) return;
+      if (!input.classList.contains('field-image')) {
+        if (input.classList.contains('field-brochure')) {
+          var file = input.files && input.files[0];
+          if (!file) return;
+          if (file.type !== 'application/pdf') {
+            alert(t('dashboard.brochureValidationPdf'));
+            input.value = '';
+            return;
+          }
+          if (file.size > 20 * 1024 * 1024) {
+            alert(t('dashboard.brochureValidationSize'));
+            input.value = '';
+            return;
+          }
+          var fnameEl = document.getElementById('fname-' + input.id);
+          if (fnameEl) fnameEl.textContent = file.name;
+          var wrap = input.parentNode;
+          if (wrap) {
+            var labelEl = wrap.querySelector('label');
+            if (labelEl) labelEl.textContent = t('dashboard.replacePdf');
+            var displayEl = wrap.querySelector('.brochure-filename-display');
+            if (!displayEl) {
+              displayEl = document.createElement('span');
+              displayEl.className = 'brochure-filename-display';
+              displayEl.title = file.name;
+              wrap.appendChild(displayEl);
+            }
+            displayEl.textContent = file.name;
+            displayEl.title = file.name;
+          }
+          return;
+        }
+        return;
+      }
       var file = input.files && input.files[0];
       if (!file) return;
       var fnameEl = document.getElementById('fname-' + input.id.replace('file-', ''));
@@ -391,9 +484,54 @@ document.addEventListener('DOMContentLoaded', function() {
       var action = btn.getAttribute('data-action');
       var card = btn.closest('.program-card-admin');
 
-      // Delete
+      // Delete brochure
+      if (action === 'delete-brochure') {
+        var lang = btn.getAttribute('data-lang');
+        var programId = btn.getAttribute('data-program');
+        if (!confirm(t('dashboard.deleteBrochureConfirm'))) return;
+
+        var currentUrl = card.getAttribute('data-original-brochure-' + lang);
+        if (!currentUrl) return;
+
+        var storagePath = currentUrl.split('/').pop();
+        if (storagePath) {
+          SupabaseAPI.deleteBrochure('brochures/' + storagePath).catch(function(err) {
+            console.warn('[Dashboard] Failed to delete brochure from storage: ' + (err && err.message ? err.message : err));
+          });
+        }
+
+        var brochureField = 'brochure_' + lang;
+        var data = {};
+        data[brochureField] = '';
+        SupabaseAPI.updateProgram(programId, data).then(function() {
+          loadPrograms();
+        });
+        return;
+      }
+
+      // Delete program — cascade delete images + brochures
       if (action === 'delete-program') {
         if (confirm(t('dashboard.deleteProgramConfirm'))) {
+          var imgPath = card.getAttribute('data-original-image');
+          if (imgPath) {
+            var imgName = imgPath.split('/').pop();
+            if (imgName) {
+              SupabaseAPI.deleteImage(imgName).catch(function(err) {
+                console.warn('[Dashboard] Failed to delete program image from storage: ' + (err && err.message ? err.message : err));
+              });
+            }
+          }
+          ['fr','en','pl'].forEach(function(lang) {
+            var broUrl = card.getAttribute('data-original-brochure-' + lang);
+            if (broUrl) {
+              var broName = broUrl.split('/').pop();
+              if (broName) {
+                SupabaseAPI.deleteBrochure('brochures/' + broName).catch(function(err) {
+                  console.warn('[Dashboard] Failed to delete brochure (' + lang + ') from storage: ' + (err && err.message ? err.message : err));
+                });
+              }
+            }
+          });
           SupabaseAPI.deleteProgram(id).then(function(r) {
             if (!r.error) loadPrograms();
           });
@@ -436,7 +574,14 @@ document.addEventListener('DOMContentLoaded', function() {
       var fileInput = card.querySelector('.field-image');
       var file = fileInput && fileInput.files && fileInput.files[0];
 
-      function saveProgram(imageUrl) {
+      // Collect brochure files
+      var brochureFiles = {};
+      ['fr','en','pl'].forEach(function(lang) {
+        var bInput = card.querySelector('.field-brochure-' + lang);
+        brochureFiles[lang] = bInput && bInput.files && bInput.files[0];
+      });
+
+      function saveProgram(imageUrl, brochureFrUrl, brochureEnUrl, brochurePlUrl) {
         var data = {
           name: name,
           destination: dest,
@@ -446,6 +591,9 @@ document.addEventListener('DOMContentLoaded', function() {
           dates: dates,
           includes: includes
         };
+        if (brochureFrUrl !== undefined) data.brochure_fr = brochureFrUrl;
+        if (brochureEnUrl !== undefined) data.brochure_en = brochureEnUrl;
+        if (brochurePlUrl !== undefined) data.brochure_pl = brochurePlUrl;
 
         if (!id) {
           SupabaseAPI.addProgram(data).then(function(r) {
@@ -464,17 +612,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
 
+      function finishSave(imageUrl) {
+        var brochureUrls = { fr: '', en: '', pl: '' };
+        // Start with existing URLs from data attributes
+        ['fr','en','pl'].forEach(function(lang) {
+          brochureUrls[lang] = card.getAttribute('data-original-brochure-' + lang) || '';
+        });
+        // Upload new brochure files
+        var uploads = [];
+        ['fr','en','pl'].forEach(function(lang) {
+          if (brochureFiles[lang]) {
+            var bf = brochureFiles[lang];
+            var bfName = Date.now() + '-' + lang + '-' + bf.name.replace(/[^a-zA-Z0-9._-]/g, '');
+            uploads.push({ lang: lang, file: bf, name: bfName });
+          }
+        });
+        if (uploads.length === 0) {
+          saveProgram(imageUrl, undefined, undefined, undefined);
+          return;
+        }
+        btn.textContent = t('dashboard.uploading');
+        var done = 0;
+        var total = uploads.length;
+        uploads.forEach(function(u) {
+          SupabaseAPI.uploadBrochure(u.file, u.name).then(function(result) {
+            done++;
+            if (!result.error) {
+              brochureUrls[u.lang] = SupabaseAPI.getBrochureUrl(u.name);
+            }
+            if (done >= total) {
+              saveProgram(imageUrl, brochureUrls.fr, brochureUrls.en, brochureUrls.pl);
+            }
+          });
+        });
+      }
+
       if (file) {
         btn.textContent = t('dashboard.uploading');
         var fileName = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9._-]/g, '');
         SupabaseAPI.uploadImage(file, fileName).then(function(result) {
           if (result.error) { btn.textContent = t('dashboard.uploadError'); return; }
           var imageUrl = SupabaseAPI.getImageUrl(fileName);
-          saveProgram(imageUrl);
+          finishSave(imageUrl);
         });
       } else {
         var imageUrl = card.getAttribute('data-original-image') || '';
-        saveProgram(imageUrl);
+        finishSave(imageUrl);
       }
     });
   }
