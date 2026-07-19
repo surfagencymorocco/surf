@@ -26,16 +26,13 @@ serve(async (req: Request) => {
       to, subject, html, host, port, user, pass, from,
     });
 
-    // ── 2. TELEGRAM (only if email succeeded) ──
+    // ── 2. TELEGRAM (fires regardless of email outcome) ──
     let telegramResult: { success: boolean; error: string | null } = {
       success: false,
       error: null,
     };
 
-    if (!emailResult.success) {
-      console.log("[Telegram] Notification skipped — email did not succeed");
-      telegramResult = { success: false, error: "Email did not succeed" };
-    } else if (!telegram_data) {
+    if (!telegram_data) {
       console.log("[Telegram] Notification skipped — no reservation data");
       telegramResult = { success: false, error: "No telegram_data provided" };
     } else {
