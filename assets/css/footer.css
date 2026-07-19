@@ -35,6 +35,9 @@ footer {
   display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
 }
 .footer-bottom p { font-size:0.8rem; display: flex; align-items: center; gap: 6px; }
+.footer-bottom a { color:#fff; text-decoration:none; transition:opacity 0.2s; }
+.footer-bottom a:visited { color:#fff; }
+.footer-bottom a:hover { opacity:0.8; }
 .footer-bottom svg { width: 14px; height: 14px; color: var(--ocean-light); }
 
 /* whatsapp float button */
