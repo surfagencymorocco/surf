@@ -66,7 +66,9 @@
             preferred_date: data.preferred_date,
             message: data.message
           };
-          // Auto-send pending email to client
+          // Telegram notification — independent, fires regardless of email config
+          SupabaseAPI.notifyTelegram(reservationInfo).then(function() {});
+          // Customer email — requires SMTP + pending template
           SupabaseAPI.getEmailSettings().then(function(sr) {
             if (sr.error || !sr.data || !sr.data[0] || !sr.data[0].smtp_user) return;
             var smtp = sr.data[0];
@@ -82,7 +84,7 @@
                 .replace(/\{\{destination\}\}/g, data.destination)
                 .replace(/\{\{date\}\}/g, data.preferred_date)
                 .replace(/\{\{status\}\}/g, 'pending');
-              SupabaseAPI.sendEmail(data.email, subject, html, smtp, reservationInfo).then(function() {});
+              SupabaseAPI.sendEmail(data.email, subject, html, smtp).then(function() {});
             });
           });
         }

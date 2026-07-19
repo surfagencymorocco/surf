@@ -178,6 +178,17 @@
         return { error: { message: err.message } };
       });
     },
+    notifyTelegram: function(data) {
+      var url = SUPABASE_URL + '/functions/v1/send-email';
+      var headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY };
+      return fetch(url, { method: 'POST', headers: headers, body: JSON.stringify({ telegram_data: data }) }).then(function(res) {
+        if (!res.ok) return res.json().then(function(d) { return { error: d }; });
+        return res.json();
+      }).catch(function(err) {
+        console.error('[Telegram] notify failed:', err.message);
+        return { error: { message: err.message } };
+      });
+    },
     logout: function() {
       return window._supabase
         ? window._supabase.auth.signOut().then(function(r) { return r; })
