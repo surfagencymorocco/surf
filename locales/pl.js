@@ -201,7 +201,8 @@ export default {
   "footer.location": "Kraków, Polska",
   "footer.chat": "Czat na WhatsApp",
   "footer.copyright": "© 2025 SurfAgencyMorocco. Wszelkie prawa zastrzeżone. Stworzone z miłością w Maroku.",
-  "footer.privacy": "Polityka prywatności · Warunki korzystania",
+  "footer.privacyPolicy": "Polityka prywatnosci",
+  "footer.termsOfService": "Warunki korzystania",
   "footer.login": "Logowanie",
 
   "lang.switcher": "Zmień język",

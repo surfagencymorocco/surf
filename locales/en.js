@@ -201,7 +201,8 @@ export default {
   "footer.location": "Kraków, Poland",
   "footer.chat": "Chat on WhatsApp",
   "footer.copyright": "© 2025 SurfAgencyMorocco. All rights reserved. Crafted with love in Morocco.",
-  "footer.privacy": "Privacy Policy · Terms of Service",
+  "footer.privacyPolicy": "Privacy Policy",
+  "footer.termsOfService": "Terms of Service",
   "footer.login": "Connexion",
 
   "lang.switcher": "Change language",
