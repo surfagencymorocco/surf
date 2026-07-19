@@ -63,7 +63,7 @@
   window.SupabaseAPI = {
     submitReservation: function(data) {
       return window._supabase
-        ? window._supabase.from('reservations').insert([data]).then(function(r) { return r; })
+        ? window._supabase.from('reservations').insert([data]).select().then(function(r) { return r; })
         : Promise.reject(new Error('Supabase not loaded'));
     },
     getReservations: function() {
