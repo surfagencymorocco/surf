@@ -12,9 +12,17 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const VERSION = "6";
+
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
+  }
+
+  // ── Health check (GET ?health=true) ──
+  const url = new URL(req.url);
+  if (req.method === "GET" && url.searchParams.get("health") === "true") {
+    return healthResponse();
   }
 
   try {
@@ -63,6 +71,29 @@ serve(async (req: Request) => {
     );
   }
 });
+
+// ─────────────────────────────────────────────────────────────
+// Health check — exposes configuration status only, never secrets
+// ─────────────────────────────────────────────────────────────
+
+function healthResponse(): Response {
+  const telegramEnabled = Deno.env.get("TELEGRAM_ENABLED") === "true";
+  const botToken = Deno.env.get("TELEGRAM_BOT_TOKEN");
+  const chatId = Deno.env.get("TELEGRAM_CHAT_ID");
+  const telegramNotifyNew = Deno.env.get("TELEGRAM_NOTIFY_ON_NEW_BOOKING");
+
+  return new Response(
+    JSON.stringify({
+      status: "ok",
+      version: VERSION,
+      telegram: telegramEnabled && !!botToken && !!chatId,
+      telegram_notify_new_booking: telegramNotifyNew !== "false",
+      smtp: true,
+      environment: "configured",
+    }),
+    { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+  );
+}
 
 // ─────────────────────────────────────────────────────────────
 // Customer email via nodemailer SMTP
