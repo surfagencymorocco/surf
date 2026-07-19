@@ -54,6 +54,18 @@
             submitBtn.style.background = '';
             submitBtn.disabled = false;
           }, 4000);
+          var inserted = result.data && result.data[0] ? result.data[0] : {};
+          var reservationInfo = {
+            id: inserted.id || null,
+            created_at: inserted.created_at || null,
+            full_name: data.full_name,
+            email: data.email,
+            phone: data.phone,
+            surf_level: data.surf_level,
+            destination: data.destination,
+            preferred_date: data.preferred_date,
+            message: data.message
+          };
           // Auto-send pending email to client
           SupabaseAPI.getEmailSettings().then(function(sr) {
             if (sr.error || !sr.data || !sr.data[0] || !sr.data[0].smtp_user) return;
@@ -70,7 +82,7 @@
                 .replace(/\{\{destination\}\}/g, data.destination)
                 .replace(/\{\{date\}\}/g, data.preferred_date)
                 .replace(/\{\{status\}\}/g, 'pending');
-              SupabaseAPI.sendEmail(data.email, subject, html, smtp).then(function() {});
+              SupabaseAPI.sendEmail(data.email, subject, html, smtp, reservationInfo).then(function() {});
             });
           });
         }

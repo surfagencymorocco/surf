@@ -156,7 +156,7 @@
         ? window._supabase.from('email_templates').upsert(data, { onConflict: 'status' }).select().then(function(r) { return r; })
         : Promise.reject(new Error('Supabase not loaded'));
     },
-    sendEmail: function(to, subject, html, smtpConfig) {
+    sendEmail: function(to, subject, html, smtpConfig, telegramData) {
       if (!window._supabase) return Promise.reject(new Error('Supabase not loaded'));
       var body = { to: to, subject: subject, html: html };
       if (smtpConfig) {
@@ -165,6 +165,9 @@
         body.user = smtpConfig.smtp_user;
         body.pass = smtpConfig.smtp_pass;
         body.from = smtpConfig.from_email;
+      }
+      if (telegramData) {
+        body.telegram_data = telegramData;
       }
       var url = SUPABASE_URL + '/functions/v1/send-email';
       var headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY };
