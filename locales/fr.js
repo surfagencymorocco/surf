@@ -304,5 +304,25 @@ export default {
   "login.password": "Mot de passe",
   "login.signIn": "Connexion",
   "login.signingIn": "Connexion en cours...",
-  "login.adminSubtitle": "Panneau Admin"
+  "login.adminSubtitle": "Panneau Admin",
+
+  "meta.title": "Surf Camp Maroc — Séjours Surf Tout Inclus 8 Jours dès 550€",
+  "meta.description": "Camps de surf tout inclus à Taghazout, Tamraght et Imsouane. 8 jours dès 550€. Petits groupes, instructeurs certifiés. Réservez vos vacances surf au Maroc depuis la France, Belgique, Suisse.",
+  "meta.ogTitle": "SurfAgencyMorocco — Camps de Surf Tout Inclus 8 Jours Maroc",
+  "meta.ogDescription": "Taghazout, Tamraght et Imsouane. Dès 550€ tout inclus. Petits groupes, instructeurs locaux certifiés, expérience surf authentique au Maroc.",
+
+  "faq.tag": "FAQ",
+  "faq.title": "Camp de Surf au Maroc — Tout Ce Que Vous Devez Savoir",
+  "faq.q1": "Quel est le meilleur camp de surf au Maroc ?",
+  "faq.a1": "Le meilleur camp de surf au Maroc dépend de votre niveau. Imsouane est le meilleur camp pour les débutants avec ses longues vagues douces et sa baie sécurisée. Tamraght offre le meilleur coaching de progression pour les intermédiaires. Taghazout est la meilleure destination pour les surfeurs avancés avec ses point breaks de classe mondiale comme Anchor Point. Tous nos camps incluent 8 jours, hébergement, repas, équipement et instructeurs certifiés.",
+  "faq.q2": "Quand est la meilleure période pour surfer au Maroc ?",
+  "faq.a2": "La meilleure saison de surf au Maroc s'étend d'octobre à avril, quand les puissantes houles de l'Atlantique Nord produisent des vagues de 1 à 4 mètres. C'est la haute saison pour les surfeurs intermédiaires et avancés. Pour les débutants, mai à septembre offre des vagues plus petites et douces avec une eau chaude — conditions idéales pour apprendre. Le Maroc bénéficie de plus de 300 jours de soleil par an.",
+  "faq.q3": "Quel camp de surf au Maroc est le meilleur pour les débutants ?",
+  "faq.a3": "Imsouane est considéré comme le meilleur camp de surf au Maroc pour les débutants. La Baie d'Imsouane possède la plus longue vague d'Afrique — une droite de 700 mètres offrant des rides longs et doux, parfaits pour les débutants. Notre camp débutant inclut 2 sessions par jour avec instructeurs certifiés, tout l'équipement fourni, et petits groupes de 8 personnes maximum à 550€ pour 8 jours tout inclus.",
+  "faq.q4": "Pourquoi choisir Taghazout pour le surf ?",
+  "faq.a4": "Taghazout est la destination surf la plus célèbre du Maroc, mondialement connue pour ses point breaks légendaires comme Anchor Point et Hash Point. Avec des houles constantes toute l'année, un climat chaud et une culture surf vibrante, Taghazout attire les surfeurs avancés de toute l'Europe. Notre trip surf à Taghazout inclut l'accès aux spots premium et secrets, sessions lever du soleil, photographie surf professionnelle et hébergement en riad de luxe.",
+  "faq.q5": "Qu'est-ce qui est inclus dans un forfait camp de surf ?",
+  "faq.a5": "Tous nos forfaits camp de surf 8 jours incluent : 7 nuits d'hébergement (riad ou surf house), petit-déjeuner et dîner quotidiens, 2 sessions de surf par jour avec instructeurs locaux certifiés, tout l'équipement (planche et combinaison), transferts aéroport depuis Agadir, petits groupes de 8 personnes maximum, et analyse vidéo (camps intermédiaire et avancé). Notre approche tout inclus signifie que vous vous concentrez sur le surf.",
+  "faq.q6": "Combien coûte un camp de surf au Maroc ?",
+  "faq.a6": "Nos camps de surf tout inclus de 8 jours au Maroc commencent à partir de 550€ par personne. Le camp débutant à Imsouane coûte 550€, le camp intermédiaire à Tamraght avec coaching vidéo coûte 650€, et le trip surf avancé à Taghazout avec spots premium coûte 750€. Tous les forfaits incluent hébergement, repas, équipement, coaching et transferts aéroport. Les vols vers Agadir ne sont pas inclus."
 };

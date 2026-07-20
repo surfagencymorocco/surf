@@ -304,5 +304,25 @@ export default {
   "login.password": "Hasło",
   "login.signIn": "Zaloguj",
   "login.signingIn": "Logowanie...",
-  "login.adminSubtitle": "Panel Admin"
+  "login.adminSubtitle": "Panel Admin",
+
+  "meta.title": "Surf Camp Maroko — 8-Dniowe Obozy Surfingowe All-Inclusive od 550€",
+  "meta.description": "Obozy surfingowe all-inclusive w Taghazout, Tamraght i Imsouane. 8 dni od 550€. Małe grupy, certyfikowani instruktorzy. Zarezerwuj wakacje surfingowe w Maroku z Polski.",
+  "meta.ogTitle": "SurfAgencyMorocco — 8-Dniowe Obozy Surfingowe All-Inclusive Maroko",
+  "meta.ogDescription": "Taghazout, Tamraght i Imsouane. Od 550€ all-inclusive. Małe grupy, certyfikowani lokalni instruktorzy, autentyczne surf doświadczenie w Maroku.",
+
+  "faq.tag": "FAQ",
+  "faq.title": "Obóz Surfingowy Maroko — Wszystko Co Musisz Wiedzieć",
+  "faq.q1": "Jaki jest najlepszy obóz surfingowy w Maroku?",
+  "faq.a1": "Najlepszy obóz surfingowy w Maroku zależy od Twojego poziomu. Imsouane to najlepszy obóz dla początkujących z długimi, łagodnymi falami i bezpieczną zatoką. Tamraght oferuje najlepszy coaching progresji dla średniozaawansowanych. Taghazout to najlepsza destynacja dla zaawansowanych surferów z punkt breakami światowej klasy jak Anchor Point. Wszystkie obozy obejmują 8 dni, zakwaterowanie, posiłki, sprzęt i certyfikowanych instruktorów.",
+  "faq.q2": "Kiedy jest najlepszy czas na surfing w Maroku?",
+  "faq.a2": "Najlepszy sezon surfingowy w Maroku trwa od października do kwietnia, gdy potężne atlantyckie fale osiągają od 1 do 4 metrów. To wysoki sezon dla średniozaawansowanych i zaawansowanych. Dla początkujących, od maja do września oferuje mniejsze, łagodniejsze fale i ciepłą wodę — idealne warunki do nauki. Maroko ma ponad 300 słonecznych dni rocznie.",
+  "faq.q3": "Który obóz surfingowy w Maroku jest najlepszy dla początkujących?",
+  "faq.a3": "Imsouane jest powszechnie uważane za najlepszy obóz surfingowy w Maroku dla początkujących. Zatoka Imsouane ma najdłuższą falę w Afryce — 700-metrową prawostronną falę oferującą długie, łagodne przejazdy idealne dla początkujących. Nasz obóz dla początkujących obejmuje 2 sesje dziennie z certyfikowanymi instruktorami, cały sprzęt i małe grupy maksymalnie 8 osób w cenie 550€ za 8 dni all-inclusive.",
+  "faq.q4": "Dlaczego warto wybrać Taghazout do surfowania?",
+  "faq.a4": "Taghazout to najbardziej znana destynacja surfingowa w Maroku, znana na całym świecie z legendarnych point breaków, w tym Anchor Point i Hash Point. Ze stałymi falami przez cały rok, ciepłą pogodą i żywą kulturą surfingową, Taghazout przyciąga zaawansowanych surferów z całej Europy. Nasza wyprawa surfingowa Taghazout obejmuje dostęp do premium i tajnych spotów, sesje o wschodzie słońca, profesjonalną fotografię surfingową i luksusowe zakwaterowanie w riadzie.",
+  "faq.q5": "Co jest zawarte w pakiecie obozu surfingowego?",
+  "faq.a5": "Wszystkie nasze 8-dniowe pakiety obozów surfingowych obejmują: 7 nocy zakwaterowania (riad lub surf house), codzienne śniadanie i kolację, 2 sesje surfowania dziennie z certyfikowanymi lokalnymi instruktorami, cały sprzęt surfingowy (deska i pianka), transfery lotniskowe z Agadiru, małe grupy maksymalnie 8 osób oraz analizę wideo (obozy średniozaawansowane i zaawansowane). Nasze podejście all-inclusive oznacza, że skupiasz się na surfowaniu.",
+  "faq.q6": "Ile kosztuje obóz surfingowy w Maroku?",
+  "faq.a6": "Nasze 8-dniowe obozy surfingowe all-inclusive w Maroku zaczynają się od 550€ za osobę. Obóz dla początkujących w Imsouane kosztuje 550€, obóz średniozaawansowany w Tamraght z coachingiem wideo kosztuje 650€, a zaawansowana wyprawa surfingowa w Taghazout z premium spotami kosztuje 750€. Wszystkie pakiety obejmują zakwaterowanie, posiłki, sprzęt, coaching i transfery lotniskowe. Loty do Agadiru nie są wliczone."
 };

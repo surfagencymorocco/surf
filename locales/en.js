@@ -304,5 +304,25 @@ export default {
   "login.password": "Password",
   "login.signIn": "Sign In",
   "login.signingIn": "Signing in...",
-  "login.adminSubtitle": "Admin Panel"
+  "login.adminSubtitle": "Admin Panel",
+
+  "meta.title": "Surf Camp Morocco — 8-Day All-Inclusive Surf Holidays from €550",
+  "meta.description": "All-inclusive surf camps in Taghazout, Tamraght & Imsouane. 8 days from €550. Small groups, certified instructors. Book your Morocco surf holiday from Europe.",
+  "meta.ogTitle": "SurfAgencyMorocco — 8-Day All-Inclusive Surf Camps Morocco",
+  "meta.ogDescription": "Taghazout, Tamraght & Imsouane. From €550 all-inclusive. Small groups, certified local instructors, authentic Morocco surf experience.",
+
+  "faq.tag": "FAQ",
+  "faq.title": "Surf Camp Morocco — Everything You Need to Know",
+  "faq.q1": "What is the best surf camp in Morocco?",
+  "faq.a1": "The best surf camp in Morocco depends on your level. Imsouane is the best surf camp for beginners with its long, gentle waves and safe bay. Tamraght offers the best progression-focused surf coaching for intermediates. Taghazout is the best destination for advanced surfers seeking world-class point breaks like Anchor Point. All our surf camps include 8 days, accommodation, meals, equipment, and certified instructors for a complete Morocco surf experience.",
+  "faq.q2": "When is the best time to surf in Morocco?",
+  "faq.a2": "The best surf season in Morocco runs from October to April, when powerful North Atlantic swells produce waves from 1 to 4 metres. This is the high season for intermediate and advanced surfers. For beginners, May to September offers smaller, gentler waves and warm water temperatures — ideal conditions for learning to surf. Morocco benefits from over 300 sunny days per year, making it a year-round surf destination.",
+  "faq.q3": "Which Moroccan surf camp is best for beginners?",
+  "faq.a3": "Imsouane is widely considered the best surf camp in Morocco for beginners. The Bay at Imsouane features Africa's longest wave — a 700-metre right-hander that provides long, gentle rides perfect for first-time surfers. Our beginner camp includes 2 daily surf sessions with certified instructors, all equipment provided, and small groups of maximum 8 people for personalized attention at a price of 550 EUR for 8 days all-inclusive.",
+  "faq.q4": "Why choose Taghazout for surfing?",
+  "faq.a4": "Taghazout is Morocco's most famous surf destination, known worldwide for its legendary point breaks including Anchor Point and Hash Point. With consistent year-round swells, warm weather, and a vibrant surf culture, Taghazout attracts advanced surfers from across Europe. Our Taghazout surf trip includes access to premium and secret spots, sunrise sessions, professional surf photography, and luxury riad accommodation — an authentic Moroccan surf experience at 750 EUR for 8 days.",
+  "faq.q5": "What is included in a surf camp package?",
+  "faq.a5": "All our 8-day surf camp packages include: 7 nights accommodation (riad or surf house), daily breakfast and dinner, 2 surf sessions per day with certified local instructors, all surfing equipment (board and wetsuit), airport transfers from Agadir, small groups of maximum 8 people, and video coaching analysis (intermediate and advanced camps). Our all-inclusive approach means you focus on surfing — we handle everything else.",
+  "faq.q6": "How much does a surf camp in Morocco cost?",
+  "faq.a6": "Our 8-day all-inclusive surf camps in Morocco start from 550 EUR per person. The Imsouane beginner camp costs 550 EUR, the Tamraght intermediate camp with video coaching costs 650 EUR, and the Taghazout advanced surf trip with premium spots costs 750 EUR. All packages include accommodation, meals, equipment, coaching, and airport transfers. Flights to Agadir are not included but we assist with travel planning."
 };

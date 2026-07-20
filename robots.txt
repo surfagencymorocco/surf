@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin/
 Sitemap: https://surfagencymorocco.com/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /admin
+Disallow: /admin/
+
+User-agent: Google-Extended
+Disallow: /admin
+Disallow: /admin/
