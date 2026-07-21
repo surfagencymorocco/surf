@@ -1,103 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surf Camp Morocco Blog &mdash; Guides, Tips &amp; Travel Advice</title>
-  <meta name="description" content="Expert surf guides, travel tips, and insider advice for your Morocco surf camp. Learn about Taghazout, Imsouane, Tamraght, best seasons, equipment, and Moroccan culture.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://surfagencymorocco.com/blog/">
-  <meta property="og:title" content="Surf Camp Morocco Blog &mdash; Guides, Tips &amp; Travel Advice">
-  <meta property="og:description" content="Expert surf guides, travel tips, and insider advice for your Morocco surf camp. Learn about Taghazout, Imsouane, Tamraght, best seasons, equipment, and Moroccan culture.">
-  <meta property="og:image" content="https://surfagencymorocco.com/images/the-magic-bay.jpg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <style>
-    body { background: #fff; color: #1a1a1a; font-family: 'DM Sans', sans-serif; margin: 0; padding: 0; }
-    .blog-layout { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-    .blog-layout h1 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; margin-bottom: 0.5em; color: #0d3b66; }
-    .blog-layout p { font-size: 1.1rem; line-height: 1.7; color: #444; }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; margin-top: 40px; }
-    .blog-card { border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; text-decoration: none; color: inherit; transition: box-shadow 0.2s; }
-    .blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-    .blog-card h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; margin: 0 0 8px; color: #0d3b66; }
-    .blog-card p { font-size: 0.95rem; margin: 0; color: #666; }
-    .coming-soon { background: #f5f5f5; padding: 32px; border-radius: 8px; text-align: center; margin-top: 48px; }
-    .coming-soon p { margin: 0; color: #888; font-style: italic; }
-    footer { margin-top: 80px; padding: 24px 0; border-top: 1px solid #eee; text-align: center; }
-    footer a { color: #0d3b66; }
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://surfagencymorocco.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://surfagencymorocco.com/blog/" }
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0D3547">
+<title>Surf Camp Morocco Blog &mdash; Guides, Tips &amp; Travel Advice | SurfAgencyMorocco</title>
+<meta name="description" content="Expert surf guides, travel tips, and insider advice for your Morocco surf camp. Learn about Taghazout, Imsouane, Tamraght, best seasons, equipment, and Moroccan culture.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://surfagencymorocco.com/blog/">
+<link rel="alternate" hreflang="pl" href="https://surfagencymorocco.com/blog/?lang=pl">
+<link rel="alternate" hreflang="en" href="https://surfagencymorocco.com/blog/?lang=en">
+<link rel="alternate" hreflang="fr" href="https://surfagencymorocco.com/blog/?lang=fr">
+<link rel="alternate" hreflang="x-default" href="https://surfagencymorocco.com/blog/">
+<meta property="og:title" content="SurfAgencyMorocco Blog &mdash; Surf Camp Guides &amp; Travel Tips">
+<meta property="og:description" content="Expert surf guides, travel tips, and insider advice for your Morocco surf camp.">
+<meta property="og:image" content="https://surfagencymorocco.com/images/the-magic-bay.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://surfagencymorocco.com/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SurfAgencyMorocco">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SurfAgencyMorocco Blog &mdash; Surf Camp Guides &amp; Travel Tips">
+<meta name="twitter:description" content="Expert surf guides, travel tips, and insider advice for your Morocco surf camp.">
+<meta name="twitter:image" content="https://surfagencymorocco.com/images/the-magic-bay.jpg">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/animations.css">
+<link rel="stylesheet" href="../assets/css/nav.css">
+<link rel="stylesheet" href="../assets/css/blog.css">
+<link rel="stylesheet" href="../assets/css/footer.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Surf Camp Morocco Blog",
+  "description": "Expert surf guides, travel tips, and insider advice for your Morocco surf camp.",
+  "url": "https://surfagencymorocco.com/blog/",
+  "isPartOf": { "@type": "WebSite", "name": "SurfAgencyMorocco", "url": "https://surfagencymorocco.com/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://surfagencymorocco.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://surfagencymorocco.com/blog/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SurfAgencyMorocco",
+  "url": "https://surfagencymorocco.com/",
+  "logo": "https://surfagencymorocco.com/assets/favicon.svg",
+  "sameAs": [
+    "https://www.instagram.com/surfagencymorocco/",
+    "https://www.facebook.com/surfagencymorocco/",
+    "https://www.youtube.com/@surfagencymorocco"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+48-662-763-381",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "French", "Polish"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Wrocławska 5A",
+    "addressLocality": "Kraków",
+    "postalCode": "30-006",
+    "addressCountry": "PL"
   }
-  </script>
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SurfAgencyMorocco",
+  "url": "https://surfagencymorocco.com/",
+  "description": "8-day all-inclusive surf camps in Taghazout, Tamraght & Imsouane, Morocco. Small groups, certified local instructors, from €550.",
+  "inLanguage": ["en", "fr", "pl"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://surfagencymorocco.com/blog/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "SurfAgencyMorocco Blog Categories",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": 11,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Article", "name": "Surf Guides", "url": "https://surfagencymorocco.com/blog/surf-guides/" } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Article", "name": "Taghazout", "url": "https://surfagencymorocco.com/blog/taghazout/" } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Article", "name": "Tamraght", "url": "https://surfagencymorocco.com/blog/tamraght/" } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "Article", "name": "Imsouane", "url": "https://surfagencymorocco.com/blog/imsouane/" } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "Article", "name": "Beginner Surf", "url": "https://surfagencymorocco.com/blog/beginner/" } },
+    { "@type": "ListItem", "position": 6, "item": { "@type": "Article", "name": "Intermediate Surf", "url": "https://surfagencymorocco.com/blog/intermediate/" } },
+    { "@type": "ListItem", "position": 7, "item": { "@type": "Article", "name": "Advanced Surf", "url": "https://surfagencymorocco.com/blog/advanced/" } },
+    { "@type": "ListItem", "position": 8, "item": { "@type": "Article", "name": "Weather & Swell", "url": "https://surfagencymorocco.com/blog/weather/" } },
+    { "@type": "ListItem", "position": 9, "item": { "@type": "Article", "name": "Moroccan Culture", "url": "https://surfagencymorocco.com/blog/culture/" } },
+    { "@type": "ListItem", "position": 10, "item": { "@type": "Article", "name": "Equipment Guide", "url": "https://surfagencymorocco.com/blog/equipment/" } },
+    { "@type": "ListItem", "position": 11, "item": { "@type": "Article", "name": "Travel Guide", "url": "https://surfagencymorocco.com/blog/travel/" } }
+  ]
+}
+</script>
 </head>
 <body>
-  <div class="blog-layout">
-    <h1>Surf Camp Morocco Blog &mdash; Guides, Tips &amp; Travel Advice</h1>
-    <p>Welcome to the SurfAgencyMorocco blog. Here you&rsquo;ll find everything you need to plan the perfect surf trip: from spot guides and skill-level advice to travel logistics and cultural insights. Whether you&rsquo;re a first-time beginner or an experienced surfer chasing Moroccan point breaks, our guides will help you make the most of your time on the Atlantic coast.</p>
 
-    <div class="blog-grid">
-      <a href="https://surfagencymorocco.com/blog/surf-guides/" class="blog-card">
-        <h2>Surf Guides</h2>
-        <p>How to surf the Atlantic coast &mdash; swell, tides, and local knowledge.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/taghazout/" class="blog-card">
-        <h2>Taghazout</h2>
-        <p>Anchor Point, Killer Point, and Morocco&rsquo;s surf capital.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/tamraght/" class="blog-card">
-        <h2>Tamraght</h2>
-        <p>Authentic Berber surf village north of Agadir.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/imsouane/" class="blog-card">
-        <h2>Imsouane</h2>
-        <p>Africa&rsquo;s longest wave &mdash; perfect for beginners and longboarders.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/beginner-surf/" class="blog-card">
-        <h2>Beginner Surf</h2>
-        <p>Learn to surf in Morocco &mdash; best spots, schools, and what to expect.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/intermediate-surf/" class="blog-card">
-        <h2>Intermediate Surf</h2>
-        <p>Progression tips, coaching, and the best waves to level up.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/advanced-surf/" class="blog-card">
-        <h2>Advanced Surf</h2>
-        <p>Pro waves, secret spots, and big-swell hunting in Morocco.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/weather/" class="blog-card">
-        <h2>Weather &amp; Swell</h2>
-        <p>Best seasons, water temperature, and swell forecasting.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/moroccan-culture/" class="blog-card">
-        <h2>Moroccan Culture</h2>
-        <p>Berber traditions, food, tea ceremony, and hammam.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/equipment/" class="blog-card">
-        <h2>Equipment Guide</h2>
-        <p>What to bring, what to rent, and wetsuit advice for Morocco.</p>
-      </a>
-      <a href="https://surfagencymorocco.com/blog/travel-guide/" class="blog-card">
-        <h2>Travel Guide</h2>
-        <p>Flights, visas, transfers, and getting around Morocco.</p>
-      </a>
-    </div>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
-    <div class="coming-soon">
-      <p>Articles coming soon &mdash; our team is working on in-depth guides for each category.</p>
-    </div>
-
-    <footer>
-      <p><a href="https://surfagencymorocco.com/">surfagencymorocco.com</a> &mdash; Your Morocco Surf Camp</p>
-    </footer>
+<!-- NAV -->
+<nav id="navbar" class="scrolled" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="SurfAgencyMorocco home">
+    <svg aria-hidden="true"><use href="#icon-wave"/></svg>
+    <span data-i18n="nav.surf">Surf</span><span data-i18n="nav.agency">Agency</span><span data-i18n="nav.morocco">Morocco</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#destinations"><svg aria-hidden="true"><use href="#icon-pin"/></svg><span data-i18n="nav.destinations">Destinations</span></a></li>
+    <li><a href="../index.html#seasons"><svg aria-hidden="true"><use href="#icon-calendar"/></svg><span data-i18n="nav.seasons">Seasons</span></a></li>
+    <li><a href="../index.html#programs"><svg aria-hidden="true"><use href="#icon-surf"/></svg><span data-i18n="nav.programs">Programs</span></a></li>
+    <li><a href="../index.html#daily"><svg aria-hidden="true"><use href="#icon-sun"/></svg><span data-i18n="nav.experience">Experience</span></a></li>
+    <li><a href="../index.html#why"><svg aria-hidden="true"><use href="#icon-flag"/></svg><span data-i18n="nav.why">Why Us</span></a></li>
+    <li><a href="../index.html#booking" class="nav-cta"><span data-i18n="nav.book">Book Now</span></a></li>
+  </ul>
+  <div class="lang-switcher" id="langSwitcher" data-i18n-title="lang.switcher" title="Change language">
+    <button data-lang="fr" class="lang-btn" aria-label="Switch to French">FR</button>
+    <button data-lang="en" class="lang-btn active" aria-label="Switch to English">EN</button>
+    <button data-lang="pl" class="lang-btn" aria-label="Switch to Polish">PL</button>
   </div>
+  <button class="hamburger" id="hamburger" data-i18n-aria-label="nav.menu" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="close-menu" id="closeMenu" data-i18n="nav.close">&#10005;</button>
+  <a href="../index.html#destinations" class="mob-link"><span data-i18n="nav.destinations">Destinations</span></a>
+  <a href="../index.html#seasons" class="mob-link"><span data-i18n="nav.seasons">Seasons</span></a>
+  <a href="../index.html#programs" class="mob-link"><span data-i18n="nav.programs">Programs</span></a>
+  <a href="../index.html#daily" class="mob-link"><span data-i18n="nav.experience">Experience</span></a>
+  <a href="../index.html#why" class="mob-link"><span data-i18n="nav.why">Why Us</span></a>
+  <a href="../index.html#booking" class="mob-link"><span data-i18n="nav.book">Book Now</span></a>
+  <div class="mob-lang-switcher">
+    <button data-lang="fr" class="lang-btn mob-lang-btn" aria-label="Switch to French">FR</button>
+    <button data-lang="en" class="lang-btn mob-lang-btn active" aria-label="Switch to English">EN</button>
+    <button data-lang="pl" class="lang-btn mob-lang-btn" aria-label="Switch to Polish">PL</button>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- BLOG HERO -->
+<section id="blog-hero">
+  <div class="blog-hero-content">
+    <div class="blog-hero-eyebrow" data-i18n="blog.hero.eyebrow">Surf Knowledge &amp; Travel Guides</div>
+    <h1 class="blog-hero-title">
+      <span data-i18n="blog.hero.title1">SURF CAMP</span>
+      <span data-i18n="blog.hero.title2">MOROCCO BLOG</span>
+    </h1>
+    <p class="blog-hero-subtitle" data-i18n="blog.hero.subtitle">Guides, Tips &amp; Insider Advice for Your Perfect Surf Trip</p>
+    <p class="blog-hero-desc" data-i18n="blog.hero.desc">From spot guides and skill-level advice to travel logistics and cultural insights. Whether you're a first-time beginner or an experienced surfer chasing Moroccan point breaks, our guides help you make the most of your time on the Atlantic coast.</p>
+  </div>
+  <svg class="blog-hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="#FAF5EC"/>
+  </svg>
+</section>
+
+<!-- BLOG POSTS -->
+<section id="blog-posts" aria-labelledby="blog-posts-title">
+  <div class="section-tag">
+    <svg aria-hidden="true"><use href="#icon-surf"/></svg>
+    <span data-i18n="blog.section.tag">Explore Our Guides</span>
+  </div>
+  <h2 id="blog-posts-title" class="section-title reveal" data-i18n="blog.section.title">Everything You Need to Know</h2>
+  <div class="divider"></div>
+  <p class="section-desc reveal reveal-delay-1" data-i18n="blog.section.desc">Expert articles covering every aspect of your Morocco surf camp. Pick a category and start planning.</p>
+
+  <div class="blog-grid">
+    <a href="surf-guides/" class="blog-card reveal reveal-delay-1" aria-label="Surf Guides category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-surf"/></svg></div>
+      <h3 data-i18n="blog.card.surfGuides">Surf Guides</h3>
+      <p data-i18n="blog.card.surfGuidesDesc">How to surf the Atlantic coast &mdash; swell, tides, and local knowledge.</p>
+    </a>
+    <a href="taghazout/" class="blog-card reveal reveal-delay-2" aria-label="Taghazout category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-wave"/></svg></div>
+      <h3 data-i18n="blog.card.taghazout">Taghazout</h3>
+      <p data-i18n="blog.card.taghazoutDesc">Anchor Point, Killer Point, and Morocco's surf capital.</p>
+    </a>
+    <a href="tamraght/" class="blog-card reveal reveal-delay-3" aria-label="Tamraght category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-home"/></svg></div>
+      <h3 data-i18n="blog.card.tamraght">Tamraght</h3>
+      <p data-i18n="blog.card.tamraghtDesc">Authentic Berber surf village north of Agadir.</p>
+    </a>
+    <a href="imsouane/" class="blog-card reveal reveal-delay-4" aria-label="Imsouane category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-flag"/></svg></div>
+      <h3 data-i18n="blog.card.imsouane">Imsouane</h3>
+      <p data-i18n="blog.card.imsouaneDesc">Africa's longest wave &mdash; perfect for beginners and longboarders.</p>
+    </a>
+    <a href="beginner/" class="blog-card reveal reveal-delay-1" aria-label="Beginner Surf category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-sun"/></svg></div>
+      <h3 data-i18n="blog.card.beginner">Beginner Surf</h3>
+      <p data-i18n="blog.card.beginnerDesc">Learn to surf in Morocco &mdash; best spots, schools, and what to expect.</p>
+    </a>
+    <a href="intermediate/" class="blog-card reveal reveal-delay-2" aria-label="Intermediate Surf category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-arrow"/></svg></div>
+      <h3 data-i18n="blog.card.intermediate">Intermediate Surf</h3>
+      <p data-i18n="blog.card.intermediateDesc">Progression tips, coaching, and the best waves to level up.</p>
+    </a>
+    <a href="advanced/" class="blog-card reveal reveal-delay-3" aria-label="Advanced Surf category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-star"/></svg></div>
+      <h3 data-i18n="blog.card.advanced">Advanced Surf</h3>
+      <p data-i18n="blog.card.advancedDesc">Pro waves, secret spots, and big-swell hunting in Morocco.</p>
+    </a>
+    <a href="weather/" class="blog-card reveal reveal-delay-4" aria-label="Weather &amp; Swell category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-calendar"/></svg></div>
+      <h3 data-i18n="blog.card.weather">Weather &amp; Swell</h3>
+      <p data-i18n="blog.card.weatherDesc">Best seasons, water temperature, and swell forecasting.</p>
+    </a>
+    <a href="culture/" class="blog-card reveal reveal-delay-1" aria-label="Moroccan Culture category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-users"/></svg></div>
+      <h3 data-i18n="blog.card.culture">Moroccan Culture</h3>
+      <p data-i18n="blog.card.cultureDesc">Berber traditions, food, tea ceremony, and hammam.</p>
+    </a>
+    <a href="equipment/" class="blog-card reveal reveal-delay-2" aria-label="Equipment Guide category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-tag"/></svg></div>
+      <h3 data-i18n="blog.card.equipment">Equipment Guide</h3>
+      <p data-i18n="blog.card.equipmentDesc">What to bring, what to rent, and wetsuit advice for Morocco.</p>
+    </a>
+    <a href="travel/" class="blog-card reveal reveal-delay-3" aria-label="Travel Guide category">
+      <span class="blog-card-badge">4 Articles</span>
+      <div class="blog-card-icon"><svg aria-hidden="true"><use href="#icon-pin"/></svg></div>
+      <h3 data-i18n="blog.card.travel">Travel Guide</h3>
+      <p data-i18n="blog.card.travelDesc">Flights, visas, transfers, and getting around Morocco.</p>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <svg aria-hidden="true"><use href="#icon-wave"/></svg>
+        <span data-i18n="nav.surf">Surf</span><span data-i18n="nav.agency">Agency</span><span data-i18n="nav.morocco">Morocco</span>
+      </span>
+      <p data-i18n="footer.brandDesc">Morocco's most authentic surf travel experience. Since 2018, we've been guiding surfers from all over the world to the best waves of the Atlantic coast.</p>
+      <p class="footer-company-info">
+        SURF AGENCY MOROCCO SP Z O O<br>
+        ul. Wrocławska 5A, 30-006 Kraków, Poland<br>
+        KRS: 0001175869 | NIP: 6793332584 | REGON: 541850550
+      </p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/surfagencymorocco/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Follow SurfAgencyMorocco on Instagram"><svg aria-hidden="true"><use href="#icon-instagram"/></svg></a>
+        <a href="https://www.facebook.com/surfagencymorocco/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook" aria-label="Follow SurfAgencyMorocco on Facebook"><svg aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+        <a href="https://www.youtube.com/@surfagencymorocco" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="Subscribe to SurfAgencyMorocco on YouTube"><svg aria-hidden="true"><use href="#icon-youtube"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.quickLinks">Quick Links</h5>
+      <ul>
+        <li><a href="../index.html#destinations"><svg aria-hidden="true"><use href="#icon-pin"/></svg><span data-i18n="nav.destinations">Destinations</span></a></li>
+        <li><a href="../index.html#seasons"><svg aria-hidden="true"><use href="#icon-calendar"/></svg><span data-i18n="nav.seasons">Seasons</span></a></li>
+        <li><a href="../index.html#programs"><svg aria-hidden="true"><use href="#icon-surf"/></svg><span data-i18n="nav.programs">Programs</span></a></li>
+        <li><a href="../index.html#daily"><svg aria-hidden="true"><use href="#icon-sun"/></svg><span data-i18n="nav.experience">Experience</span></a></li>
+        <li><a href="../index.html#booking"><svg aria-hidden="true"><use href="#icon-arrow"/></svg><span data-i18n="nav.book">Book Now</span></a></li>
+        <li><a href="index.html"><svg aria-hidden="true"><use href="#icon-surf"/></svg><span data-i18n="footer.blog">Surf Blog</span></a></li>
+        <li><a href="../admin/index.html"><svg aria-hidden="true"><use href="#icon-person"/></svg><span data-i18n="footer.login">Connexion</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.contact">Contact</h5>
+      <ul>
+        <li><a href="mailto:info@surfagencymorocco.com"><svg aria-hidden="true"><use href="#icon-mail"/></svg>info@surfagencymorocco.com</a></li>
+        <li><a href="https://wa.me/48662763381" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-whatsapp"/></svg><span data-i18n="footer.whatsapp">WhatsApp: +48 662 763 381</span></a></li>
+        <li><a href="#"><svg aria-hidden="true"><use href="#icon-pin"/></svg><span data-i18n="footer.location">Kraków, Poland</span></a></li>
+      </ul>
+      <div class="footer-col-cta">
+        <a href="https://wa.me/48662763381" target="_blank" rel="noopener noreferrer" class="btn-primary btn-primary--sm">
+          <svg aria-hidden="true"><use href="#icon-whatsapp"/></svg> <span data-i18n="footer.chat">Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><svg aria-hidden="true"><use href="#icon-wave"/></svg><span data-i18n="footer.copyright">© 2025 SurfAgencyMorocco. All rights reserved. Crafted with love in Morocco.</span></p>
+    <p><a href="../privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a> · <a href="../terms.html" data-i18n="footer.termsOfService">Terms of Service</a></p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/48662763381" target="_blank" rel="noopener noreferrer" class="whatsapp-float" data-i18n-aria-label="footer.chat" aria-label="Chat on WhatsApp">
+  <svg aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+  <span class="whatsapp-tooltip" data-i18n="footer.chat">Chat on WhatsApp</span>
+</a>
+
+<script defer src="../assets/js/i18n.js"></script>
+<script defer src="../assets/js/svg-loader.js"></script>
+<script defer src="../assets/js/nav.js"></script>
+<script defer src="../assets/js/reveal.js"></script>
+
 </body>
 </html>

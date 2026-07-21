@@ -32,7 +32,19 @@
     <priority>0.8</priority>
   </url>
   <!-- Blog hub -->
-  <url><loc>https://surfagencymorocco.com/blog/</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- Blog categories -->
+  <url><loc>https://surfagencymorocco.com/blog/surf-guides/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/taghazout/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/tamraght/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/imsouane/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/beginner/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/intermediate/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/advanced/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/weather/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/culture/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/equipment/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://surfagencymorocco.com/blog/travel/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <!-- European landing pages (index-ready, unique content per country) -->
   <url><loc>https://surfagencymorocco.com/surf-camp-morocco-france.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://surfagencymorocco.com/surf-camp-morocco-belgium.html</loc><lastmod>2026-07-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>

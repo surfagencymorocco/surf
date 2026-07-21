@@ -36,43 +36,45 @@
     for (var i = 0; i < elements.length; i++) {
       var el = elements[i];
       var key = el.getAttribute('data-i18n');
-      if (key) el.textContent = window._i18next.t(key);
+      if (key) el.textContent = t(key);
     }
 
     var phElements = document.querySelectorAll('[data-i18n-placeholder]');
     for (var j = 0; j < phElements.length; j++) {
       var pel = phElements[j];
-      pel.placeholder = window._i18next.t(pel.getAttribute('data-i18n-placeholder'));
+      pel.placeholder = t(pel.getAttribute('data-i18n-placeholder'));
     }
 
     var tElements = document.querySelectorAll('[data-i18n-title]');
     for (var k = 0; k < tElements.length; k++) {
       var tel = tElements[k];
-      tel.title = window._i18next.t(tel.getAttribute('data-i18n-title'));
+      tel.title = t(tel.getAttribute('data-i18n-title'));
     }
 
     var aElements = document.querySelectorAll('[data-i18n-alt]');
     for (var m = 0; m < aElements.length; m++) {
       var ael = aElements[m];
-      ael.alt = window._i18next.t(ael.getAttribute('data-i18n-alt'));
+      ael.alt = t(ael.getAttribute('data-i18n-alt'));
     }
 
     var cElements = document.querySelectorAll('[data-i18n-content]');
     for (var n = 0; n < cElements.length; n++) {
       var cel = cElements[n];
-      cel.setAttribute('content', window._i18next.t(cel.getAttribute('data-i18n-content')));
+      cel.setAttribute('content', t(cel.getAttribute('data-i18n-content')));
     }
 
     var ariaElements = document.querySelectorAll('[data-i18n-aria-label]');
     for (var q = 0; q < ariaElements.length; q++) {
       var arEl = ariaElements[q];
-      arEl.setAttribute('aria-label', window._i18next.t(arEl.getAttribute('data-i18n-aria-label')));
+      arEl.setAttribute('aria-label', t(arEl.getAttribute('data-i18n-aria-label')));
     }
 
-    document.title = window._i18next.t('meta.title');
+    var titleEl = document.querySelector('title');
+    var titleKey = titleEl ? titleEl.getAttribute('data-i18n') : null;
+    if (titleKey) { document.title = t(titleKey); }
 
     var canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
+    if (canonical && canonical.href.indexOf('surfagencymorocco.com/blog') === -1) {
       canonical.href = _currentLang === 'pl' ? 'https://surfagencymorocco.com/?lang=pl' :
                        _currentLang === 'fr' ? 'https://surfagencymorocco.com/?lang=fr' :
                        'https://surfagencymorocco.com/?lang=en';
